@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>@yield('title') | Vuexy - Bootstrap Dashboard PRO</title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
 
     @include('backend.layouts.partials.style')
 </head>

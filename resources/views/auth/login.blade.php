@@ -1,48 +1,117 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-        <x-validation-errors class="mb-4" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login | Vuexy</title>
+    <link rel="stylesheet" href="{{ asset('backend') }}/vendor/css/pages/page-auth.css">
+    @include('backend.layouts.partials.style')
+</head>
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ $value }}
+<body>
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner py-6">
+                <!-- Login -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="app-brand justify-content-center mb-6">
+                            <a href="{{ url('/') }}" class="app-brand-link">
+                                <span class="app-brand-logo demo d-flex flex-column align-items-center">
+                                    <span class="text-primary">
+                                        <img src="{{ asset('backend/logo/unicorn_logo.png') }}" alt="Logo" height="70" class="app-brand-logo-default">
+                                    </span>
+                                </span>
+                                <span class="app-brand-text demo text-heading fw-bold">Unicorn Group</span>
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+                        <h4 class="mb-1">Welcome to Unicorn Group!</h4>
+                        <p class="mb-6">Please sign-in to your account and start the adventure</p>
+
+                        <form id="formAuthentication" class="mb-4 fv-plugins-bootstrap5 fv-plugins-framework"
+                            action="{{ route('login') }}" method="POST" novalidate="novalidate">
+                            @csrf
+                            @method('POST')
+                            <div class="mb-6 form-control-validation fv-plugins-icon-container">
+                                <label for="login" class="form-label">Email or Phone Number<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="login" name="login"
+                                    placeholder="Enter your email or phone number" autofocus="">
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="mb-6 form-password-toggle form-control-validation fv-plugins-icon-container">
+                                <label class="form-label" for="password">Password<span class="text-danger">*</span></label>
+                                <div class="input-group input-group-merge has-validation">
+                                    <input type="password" id="password" class="form-control" name="password"
+                                        placeholder="············" aria-describedby="password">
+                                    <span class="input-group-text cursor-pointer"><i
+                                            class="icon-base ti tabler-eye-off"></i></span>
+                                </div>
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="my-8">
+                                <div class="d-flex justify-content-between">
+                                    <div class="form-check mb-0 ms-2">
+                                        <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
+                                        <label class="form-check-label" for="remember-me"> Remember Me </label>
+                                    </div>
+                                    <a href="{{ route('password.request')}}">
+                                        <p class="mb-0">Forgot Password?</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <button class="btn btn-primary d-grid w-100 waves-effect waves-light"
+                                    type="submit">Login</button>
+                            </div>
+                        </form>
+
+                        <p class="text-center">
+                            <span>New on our platform?</span>
+                            <a href="{{ route('register') }}">
+                                <span>Create an account</span>
+                            </a>
+                        </p>
+
+                        {{-- <div class="divider my-6">
+                            <div class="divider-text">or</div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <a href="javascript:;"
+                                class="btn btn-icon rounded-circle btn-text-facebook me-1_5 waves-effect">
+                                <i class="icon-base ti tabler-brand-facebook-filled icon-20px"></i>
+                            </a>
+
+                            <a href="javascript:;"
+                                class="btn btn-icon rounded-circle btn-text-twitter me-1_5 waves-effect">
+                                <i class="icon-base ti tabler-brand-twitter-filled icon-20px"></i>
+                            </a>
+
+                            <a href="javascript:;"
+                                class="btn btn-icon rounded-circle btn-text-github me-1_5 waves-effect">
+                                <i class="icon-base ti tabler-brand-github-filled icon-20px"></i>
+                            </a>
+
+                            <a href="javascript:;"
+                                class="btn btn-icon rounded-circle btn-text-google-plus waves-effect">
+                                <i class="icon-base ti tabler-brand-google-filled icon-20px"></i>
+                            </a>
+                        </div> --}}
+                    </div>
+                </div>
+                <!-- /Login -->
             </div>
-        @endsession
+        </div>
+    </div>
+    @include('backend.layouts.partials.script')
+</body>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+</html>
