@@ -7,6 +7,9 @@ use App\Http\Controllers\OthersController;
 Route::get('/', function () {
     return view('frontend.pages.home.index');
 })->name('home');
+Route::get('/about', function () {
+    return view('frontend.pages.about.index');
+})->name('about');
 // Route::post('/contact-us', ContactController::class)->name('contact.us');
 
 require __DIR__ . '/admin.php';

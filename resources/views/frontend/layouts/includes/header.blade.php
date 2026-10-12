@@ -7,7 +7,7 @@
         <nav class="main-nav" id="nav" aria-label="Main">
             <ul class="menu">
                 <li><a href="{{ route('home') }}" class="{{ Route::is('home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="{{ route('about') }}" class="{{ Route::is('about') ? 'active' : '' }}">About Us</a></li>
                 <li><a href="management.html">Management</a></li>
                 <li class="has-dd">
                     <a href="products.html">Products <i class="caret"></i></a>
@@ -50,7 +50,7 @@
             </ul>
         </nav>
         <div class="nav-actions">
-            <button class="btn btn-primary" data-open-quote>Get a Quote</button>
+            {{-- <button class="btn btn-primary" data-open-quote>Get a Quote</button> --}}
             <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </div>

@@ -15,7 +15,7 @@
         <div>
             <h4>Useful Links</h4>
             <ul>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="{{ route('about') }}">About Us</a></li>
                 <li><a href="management.html">Management</a></li>
                 <li><a href="spare-parts.html">Spare Parts</a></li>
                 <li><a href="project.html">Project</a></li>
@@ -38,16 +38,17 @@
             <h4>Location</h4>
             <ul>
                 <li class="contact-li">📞 <a href="tel:+8801335106960">+880 1335-106960</a></li>
-                <li class="contact-li">✉ <a href="mailto:unicorureltd@gmail.com">unicorureltd@gmail.com</a></li>
+                <li class="contact-li">✉ <a href="mailto:unicornventureltd@gmail.com">unicornventureltd@gmail.com</a></li>
                 <li class="contact-li">📍 Ujjal Tower, L-5, 362, DIT Road, East Rampura, Dhaka 1219</li>
             </ul>
             <iframe class="map" loading="lazy" title="Map"
                 src="https://maps.google.com/maps?q=Ujjal%20Tower%2C%20L-5%2C%20362%2C%20DIT%20Road%2C%20East%20Rampura%20Dhaka%201219&t=m&z=14&output=embed&iwloc=near"></iframe>
-            <button class="btn btn-primary" data-open-quote style="margin-top:18px">Get a Quote</button>
+            {{-- <button class="btn btn-primary" data-open-quote style="margin-top:18px">Get a Quote</button> --}}
         </div>
     </div>
     <div class="copy">
         <div class="container"><span>© <span id="year"></span> Unicorn Group. All rights
-                reserved.</span><span>Lifts · Escalators · Generators · Substations · Busbar Trunking</span></div>
+                reserved.</span>
+                {{-- <span>Lifts · Escalators · Generators · Substations · Busbar Trunking</span></div> --}}
     </div>
 </footer>
