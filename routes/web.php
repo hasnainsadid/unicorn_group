@@ -10,6 +10,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('frontend.pages.about.index');
 })->name('about');
+Route::get('/management', function () {
+    return view('frontend.pages.management.index');
+})->name('management');
 // Route::post('/contact-us', ContactController::class)->name('contact.us');
 
 require __DIR__ . '/admin.php';

@@ -8,7 +8,7 @@
             <ul class="menu">
                 <li><a href="{{ route('home') }}" class="{{ Route::is('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="{{ route('about') }}" class="{{ Route::is('about') ? 'active' : '' }}">About Us</a></li>
-                <li><a href="management.html">Management</a></li>
+                <li><a href="{{ route('management') }}" class="{{ Route::is('management') ? 'active' : '' }}">Management</a></li>
                 <li class="has-dd">
                     <a href="products.html">Products <i class="caret"></i></a>
                     <ul class="dropdown">
