@@ -16,11 +16,11 @@
             <h4>Useful Links</h4>
             <ul>
                 <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="management.html">Management</a></li>
-                <li><a href="spare-parts.html">Spare Parts</a></li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="{{ route('management') }}">Management</a></li>
+                <li><a href="{{ route('spare.part') }}">Spare Parts</a></li>
+                <li><a href="{{ route('project') }}">Project</a></li>
+                <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li>
             </ul>
         </div>
         <div>

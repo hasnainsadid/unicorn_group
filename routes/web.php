@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OthersController;
-// use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\ContactController;
 
 Route::get('/', function () {
     return view('frontend.pages.home.index');
@@ -13,7 +13,21 @@ Route::get('/about', function () {
 Route::get('/management', function () {
     return view('frontend.pages.management.index');
 })->name('management');
-// Route::post('/contact-us', ContactController::class)->name('contact.us');
+Route::get('/product', function () {
+    return view('frontend.pages.product.index');
+})->name('product');
+Route::get('/spare-part', function () {
+    return view('frontend.pages.spare_parts.index');
+})->name('spare.part');
+Route::get('/project', function () {
+    return view('frontend.pages.project.index');
+})->name('project');
+Route::get('/gallery', function () {
+    return view('frontend.pages.gallery.index');
+})->name('gallery');
+Route::get('/contact', function () {
+    return view('frontend.pages.contact.index'); 
+})->name('contact');
 
 require __DIR__ . '/admin.php';
 

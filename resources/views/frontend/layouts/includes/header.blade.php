@@ -10,9 +10,9 @@
                 <li><a href="{{ route('about') }}" class="{{ Route::is('about') ? 'active' : '' }}">About Us</a></li>
                 <li><a href="{{ route('management') }}" class="{{ Route::is('management') ? 'active' : '' }}">Management</a></li>
                 <li class="has-dd">
-                    <a href="products.html">Products <i class="caret"></i></a>
+                    <a href="{{ route('product') }}">Products <i class="caret"></i></a>
                     <ul class="dropdown">
-                        <li class="mobile-only"><a href="products.html">All Products</a></li>
+                        <li class="mobile-only"><a href="{{ route('product') }}">All Products</a></li>
                         <li class="has-sub">
                             <a href="lift.html">Lift</a>
                             <ul class="sub">
@@ -35,7 +35,7 @@
                         <li><a href="busbar-trunking.html">Busbar Trunking (BBT)</a></li>
                     </ul>
                 </li>
-                <li><a href="spare-parts.html">Spare Parts</a></li>
+                <li><a href="{{ route('spare.part') }}" class="{{ Route::is('spare.part') ? 'active' : '' }}">Spare Parts</a></li>
                 <li class="has-dd">
                     <a href="#">Service <i class="caret"></i></a>
                     <ul class="dropdown">
@@ -44,9 +44,9 @@
                         <li><a href="service-maintenance.html">Service &amp; Maintenance</a></li>
                     </ul>
                 </li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{ route('project') }}">Project</a></li>
+                <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-actions">
