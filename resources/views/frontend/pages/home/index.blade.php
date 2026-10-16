@@ -1,5 +1,10 @@
 @extends('frontend.layouts.app')
 @section('title', 'Home')
+
+@push('preloader')
+    @include('frontend.layouts.partials.lift-intro')
+@endpush
+
 @section('content')
     @include('frontend.pages.home.sections.hero')
     @include('frontend.pages.home.sections.welcome')
