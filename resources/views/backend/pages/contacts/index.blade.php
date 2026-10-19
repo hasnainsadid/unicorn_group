@@ -11,7 +11,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Subject</th>
                             <th>Message</th>
                             <th>Actions</th>
                         </tr>
@@ -21,9 +20,6 @@
                             <tr>
                                 <td>{{ $contact->name }}</td>
                                 <td>{{ $contact->email }}</td>
-                                <td>
-                                    {{ $contact->subject }}
-                                </td>
                                 {{-- <td><span class="badge bg-label-primary me-1">Active</span></td> --}}
                                 <td>{!! wordwrap($contact->message, 40, '<br>') !!}</td>
                                 <td>

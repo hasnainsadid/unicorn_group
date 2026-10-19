@@ -9,24 +9,6 @@
 
     <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
 
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-            <div class="nav-item navbar-search-wrapper px-md-0 px-2 mb-0">
-                <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
-                    <span class="d-inline-block text-body-secondary fw-normal" id="autocomplete">
-                        <div class="aa-Autocomplete" role="combobox" aria-expanded="false" aria-haspopup="listbox"
-                            aria-labelledby="autocomplete-0-label">
-                            <button type="button" class="aa-DetachedSearchButton" title="Search"
-                                id="autocomplete-0-label">
-                                <div class="aa-DetachedSearchButtonQuery"></div>
-                            </button>
-                        </div>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <!-- /Search -->
-
         <ul class="navbar-nav flex-row align-items-center ms-md-auto">
 
             <!-- Style Switcher -->
@@ -64,12 +46,12 @@
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
-                    data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                         <img src="{{ auth()->user()->profile_photo_path
-                                                ? Storage::url(auth()->user()->profile_photo_path)
-                                                : Storage::url('default.jpg') }}" alt="Avatar" class="rounded-circle">
+                            ? asset('backend/img/profile/' . basename(auth()->user()->profile_photo_path))
+                            : asset('backend/img/profile/default.png') }}"
+                            alt="Avatar" class="rounded-circle">
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -79,13 +61,14 @@
                                 <div class="flex-shrink-0 me-2">
                                     <div class="avatar avatar-online">
                                         <img src="{{ auth()->user()->profile_photo_path
-                                                ? Storage::url(auth()->user()->profile_photo_path)
-                                                : Storage::url('default.jpg') }}" alt="Avatar" class="rounded-circle">
+                                            ? asset('backend/img/profile/' . basename(auth()->user()->profile_photo_path))
+                                            : asset('backend/img/profile/default.png') }}"
+                                            alt="Avatar" class="rounded-circle">
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0">{{ auth()->user()->name }}</h6>
-                                    <small class="text-body-secondary">Admin</small>
+                                    <small class="text-body-secondary">{{ auth()->user()->designation }}</small>
                                 </div>
                             </div>
                         </a>
@@ -99,22 +82,16 @@
                                 Profile</span> </a>
                     </li>
                     <li>
-                        <a class="dropdown-item waves-effect" href="pages-account-settings-account.html"> <i
-                                class="icon-base ti tabler-settings me-3 icon-md"></i><span
-                                class="align-middle">Settings</span> </a>
-                    </li>
-                    <li>
                         <div class="d-grid px-2 pt-2 pb-1">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button type="submit"
-                            {{-- class="dropdown-item d-flex align-items-center" --}}
-                            class="btn btn-sm btn-danger d-flex waves-effect waves-light">
-                                <i class="bx bx-log-out-circle"></i>
-                                <small class="align-middle">Logout</small>
-                                <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
-                            </button>
-                        </form>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" {{-- class="dropdown-item d-flex align-items-center" --}}
+                                    class="btn btn-sm btn-danger d-flex waves-effect waves-light">
+                                    <i class="bx bx-log-out-circle"></i>
+                                    <small class="align-middle">Logout</small>
+                                    <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
+                                </button>
+                            </form>
                         </div>
                     </li>
                 </ul>
