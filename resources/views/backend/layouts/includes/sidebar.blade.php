@@ -46,6 +46,12 @@
         <li class="menu-header small">
             <span class="menu-header-text">Main pages</span>
         </li>
+        <li class="menu-item {{ request()->routeIs('sliders.*') ? 'active' : '' }}">
+            <a href="{{ route('sliders.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-slideshow"></i>
+                <div>Hero Slider</div>
+            </a>
+        </li>
         <!-- Forms -->
          <li class="menu-item">
             <a href="{{ route('contacts.index') }}" class="menu-link">

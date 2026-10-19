@@ -1,42 +1,42 @@
 <section class="hero" id="home" aria-roledescription="carousel">
     <canvas id="particles"></canvas>
 
-    <div class="slide active">
-        <div class="container hero-inner">
-            <div class="slide-content">
-                <span class="eyebrow">Smart Technology Solutions</span>
-                <h1>Building the future with <em>trust</em> &amp; engineering</h1>
-                <p>Reliable vertical-transport, power and automation systems delivered with uncompromising safety
-                    and 24/7 support.</p>
-                <div class="btns"><a href="{{ route('product') }}" class="btn btn-primary">Explore Products →</a><a
-                        href="{{ route('about') }}" class="btn btn-ghost">About Us</a></div>
+    @forelse ($sliders as $slide)
+        <div class="slide {{ $loop->first ? 'active' : '' }}">
+            <div class="container hero-inner">
+                <div class="slide-content">
+                    @if ($slide->eyebrow)
+                        <span class="eyebrow">{{ $slide->eyebrow }}</span>
+                    @endif
+                    <h1>{!! $slide->title_html !!}</h1>
+                    @if ($slide->text)
+                        <p>{{ $slide->text }}</p>
+                    @endif
+                    <div class="btns">
+                        @if ($slide->btn1_text)
+                            <a href="{{ url($slide->btn1_url) }}" class="btn btn-primary">{{ $slide->btn1_text }} →</a>
+                        @endif
+                        @if ($slide->btn2_text)
+                            <a href="{{ url($slide->btn2_url) }}" class="btn btn-ghost">{{ $slide->btn2_text }}</a>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="slide">
-        <div class="container hero-inner">
-            <div class="slide-content">
-                <span class="eyebrow">Safety · Comfort · Speed</span>
-                <h1>Moving people <em>safely</em>, every single day</h1>
-                <p>From high-rise towers to private villas — premium elevators and escalators tailored to every
-                    building.</p>
-                <div class="btns"><a href="{{ route('concern.elevator') }}" class="btn btn-primary">Unicorn Elevator →</a><button
-                        class="btn btn-ghost" data-open-quote>Request a Quote</button></div>
+    @empty
+        {{-- Admin e kono active slide na thakle default --}}
+        <div class="slide active">
+            <div class="container hero-inner">
+                <div class="slide-content">
+                    <span class="eyebrow">Smart Technology Solutions</span>
+                    <h1>Building the future with <em>trust</em> &amp; engineering</h1>
+                    <div class="btns">
+                        <a href="{{ route('about') }}" class="btn btn-primary">About Us →</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="slide">
-        <div class="container hero-inner">
-            <div class="slide-content">
-                <span class="eyebrow">Service &amp; Maintenance</span>
-                <h1>Always on. <em>24/7</em> expert support.</h1>
-                <p>Certified engineers, genuine spare parts and fast response to keep your equipment running without
-                    a pause.</p>
-                <div class="btns"><a href="{{ route('concern.care') }}" class="btn btn-primary">Unicorn Care
-                        →</a><a href="{{ route('contact') }}" class="btn btn-ghost">Contact Us</a></div>
-            </div>
-        </div>
-    </div>
+    @endforelse
     <!-- animated lift (stays above all slides) -->
     <div class="container hero-inner hero-lift">
         <div></div>

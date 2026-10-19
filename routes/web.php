@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OthersController;
+use App\Models\Slider;
 
 Route::get('/', function () {
-    return view('frontend.pages.home.index');
+    $sliders = Slider::active()->get();
+    return view('frontend.pages.home.index', compact('sliders'));
 })->name('home');
 Route::get('/about', function () {
     return view('frontend.pages.about.index');
