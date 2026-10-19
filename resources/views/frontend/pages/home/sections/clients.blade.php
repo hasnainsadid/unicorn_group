@@ -1,19 +1,23 @@
-<section class="alt" id="clients" style="padding:80px 0">
-    <div class="container">
-        <div class="section-head center reveal"><span class="eyebrow">Trusted By</span>
-            <h2 class="section-title">Our <span>Clients</span></h2>
-        </div>
+@if(isset($clients) && $clients->count())
+<section id="clients" style="padding:80px 0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Trusted By</span>
+      <h2>Our Clients</h2>
     </div>
-    <div class="marquee reveal">
-        <div class="track" id="track">
-            <div class="client">CLIENT ONE</div>
-            <div class="client">NORTHWIND</div>
-            <div class="client">BLUE ORBIT</div>
-            <div class="client">SKYLINE CO.</div>
-            <div class="client">METRO HUB</div>
-            <div class="client">GREENFIELD</div>
-            <div class="client">ATLAS BUILD</div>
-            <div class="client">URBAN EDGE</div>
+  </div>
+  <div class="marquee">
+    <div class="track" id="track">
+      @foreach($clients as $client)
+        <div class="client" title="{{ $client->name }}">
+          @if($client->logo)
+            <img src="{{ imageShow($client->logo) }}" alt="{{ $client->name }}" loading="lazy">
+          @else
+            {{ $client->name }}
+          @endif
         </div>
+      @endforeach
     </div>
+  </div>
 </section>
+@endif

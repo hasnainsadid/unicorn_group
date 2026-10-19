@@ -10,7 +10,7 @@
                 </a>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th>Order</th>

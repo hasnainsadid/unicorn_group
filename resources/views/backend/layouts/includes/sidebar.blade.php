@@ -20,7 +20,7 @@
                     </svg>
                 </span>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-3">Vuexy</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-3">Unicorn</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -35,7 +35,7 @@
 
     <ul class="menu-inner py-1 ps ps--active-y">
         <!-- Dashboards -->
-        <li class="menu-item active open">
+        <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }} open">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-smart-home"></i>
                 <div>Dashboards</div>
@@ -52,8 +52,15 @@
                 <div>Hero Slider</div>
             </a>
         </li>
+
+        <li class="menu-item {{ request()->routeIs('clients.*') ? 'active' : '' }}">
+            <a href="{{ route('clients.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-users-group"></i>
+                <div>Clients</div>
+            </a>
+        </li>
         <!-- Forms -->
-         <li class="menu-item">
+        <li class="menu-item">
             <a href="{{ route('contacts.index') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-message"></i>
                 <div>Contact Us</div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\SliderController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,8 @@ Route::middleware([
 
     Route::resource('sliders', SliderController::class);
     Route::post('sliders/{slider}/toggle', [SliderController::class, 'toggle'])->name('sliders.toggle');
+
+    Route::resource('clients', ClientController::class)->except('show');
 
     Route::resource('contacts', ContactController::class)->only(['index', 'destroy']);
     Route::get('contacts/recycle-bin', [ContactController::class, 'recycleBin'])->name('contacts.recycleBin');

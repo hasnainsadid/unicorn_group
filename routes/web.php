@@ -1,12 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OthersController;
+use App\Models\Client;
 use App\Models\Slider;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $sliders = Slider::active()->get();
-    return view('frontend.pages.home.index', compact('sliders'));
+    $clients = Client::ordered()->get();
+    return view('frontend.pages.home.index', compact('sliders', 'clients'));
 })->name('home');
 Route::get('/about', function () {
     return view('frontend.pages.about.index');

@@ -1631,3 +1631,24 @@ footer .logo-word-img {
 @media (prefers-reduced-motion: reduce) {
     #wa, #wc { animation: none; }
 }
+/* Clients: golden hover */
+.client {
+    position: relative;
+    overflow: hidden;
+}
+.client img {
+    max-height: 44px;
+    max-width: 150px;
+    object-fit: contain;
+    transition: transform .35s ease;
+}
+.client:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(245,165,36,.14), rgba(255,203,107,.06)), var(--card);
+    box-shadow: 0 14px 34px rgba(245,165,36,.28), 0 0 0 1px rgba(245,165,36,.35) inset;
+    transform: translateY(-5px);
+}
+.client:hover img {
+    transform: scale(1.06);
+}
