@@ -1,7 +1,7 @@
 <footer>
     <div class="container foot-grid">
         <div>
-            <a href="index.html" class="logo" aria-label="Home" style="margin-bottom:18px"><img class="logo-mark-img"
+            <a href="{{ route('home') }}" class="logo" aria-label="Home" style="margin-bottom:18px"><img class="logo-mark-img"
                     src="{{ asset('frontend') }}/img/logo-mark.png" alt="logo" width="297" height="279"><img
                     class="logo-word-img" src="{{ asset('frontend') }}/img/logo-word.png" alt="Unicorn Group logo"
                     width="303" height="118"></a>
@@ -17,8 +17,7 @@
             <ul>
                 <li><a href="{{ route('about') }}">About Us</a></li>
                 <li><a href="{{ route('management') }}">Management</a></li>
-                <li><a href="{{ route('spare.part') }}">Spare Parts</a></li>
-                <li><a href="{{ route('project') }}">Project</a></li>
+                <li><a href="{{ route('about') }}#concerns">Our Concerns</a></li>
                 <li><a href="{{ route('gallery') }}">Gallery</a></li>
                 <li><a href="{{ route('contact') }}">Contact Us</a></li>
             </ul>
@@ -49,6 +48,7 @@
     <div class="copy">
         <div class="container"><span>© <span id="year"></span> Unicorn Group. All rights
                 reserved.</span>
-                {{-- <span>Lifts · Escalators · Generators · Substations · Busbar Trunking</span></div> --}}
+            {{-- <span>Lifts · Escalators · Generators · Substations · Busbar Trunking</span> --}}
+        </div>
     </div>
 </footer>

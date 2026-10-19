@@ -10,43 +10,34 @@
                 <li><a href="{{ route('about') }}" class="{{ Route::is('about') ? 'active' : '' }}">About Us</a></li>
                 <li><a href="{{ route('management') }}" class="{{ Route::is('management') ? 'active' : '' }}">Management</a></li>
                 <li class="has-dd">
-                    <a href="{{ route('product') }}">Products <i class="caret"></i></a>
+                    <a href="{{ route('about') }}#concerns" class="{{ Route::is('concern.*') ? 'active' : '' }}">Concerns <i class="caret"></i></a>
                     <ul class="dropdown">
-                        <li class="mobile-only"><a href="{{ route('product') }}">All Products</a></li>
+                        <li><a href="{{ route('concern.venture') }}">Unicorn Venture Ltd</a></li>
                         <li class="has-sub">
-                            <a href="lift.html">Lift</a>
+                            <a href="{{ route('concern.elevator') }}">Unicorn Elevator</a>
                             <ul class="sub">
-                                <li class="mobile-only"><a href="lift.html">All Lifts</a></li>
-                                <li><a href="passenger-lift.html">Passenger Lift</a></li>
-                                <li><a href="hospital-bed-lift.html">Hospital / Bed Lift</a></li>
-                                <li><a href="car-lift.html">Car Lift</a></li>
-                                <li><a href="freight-cargo-lift.html">Freight / Cargo Lift</a></li>
-                                <li><a href="observation-lift.html">Observation Lift</a></li>
-                                <li><a href="panoramic-lift.html">Panoramic Lift</a></li>
-                                <li><a href="capsule-lift.html">Capsule Lift</a></li>
-                                <li><a href="villa-lift.html">Villa Lift</a></li>
-                                <li><a href="dumbwaiter.html">Dumbwaiter</a></li>
+                                <li class="mobile-only"><a href="{{ route('concern.elevator') }}">All Our Brands</a></li>
+                                <li><a href="{{ route('concern.elevator.blt') }}">BLT</a></li>
+                                <li><a href="{{ route('concern.elevator.hidoks') }}">Hidoks</a></li>
+                                <li><a href="{{ route('concern.elevator.sigma') }}">Sigma</a></li>
                             </ul>
                         </li>
-                        <li><a href="escalator.html">Escalator</a></li>
-                        <li><a href="moving-walkways.html">Moving Walkways</a></li>
-                        <li><a href="generator.html">Generator</a></li>
-                        <li><a href="substation.html">Substation</a></li>
-                        <li><a href="busbar-trunking.html">Busbar Trunking (BBT)</a></li>
+                        <li><a href="{{ route('concern.energy') }}">Unicorn Energy</a></li>
+                        <li><a href="{{ route('concern.care') }}">Unicorn Care</a></li>
+                        <li class="has-sub">
+                            <a href="{{ route('concern.engineering') }}">Unicorn Engineering</a>
+                            <ul class="sub">
+                                <li class="mobile-only"><a href="{{ route('concern.engineering') }}">All What We Do</a></li>
+                                <li><a href="{{ route('concern.engineering.generator') }}">Generator</a></li>
+                                <li><a href="{{ route('concern.engineering.substation') }}">Sub-station</a></li>
+                                <li><a href="{{ route('concern.engineering.design') }}">Design Drawing Consultancy (2D-3D)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('concern.landmark') }}">Unicorn Landmark</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('spare.part') }}" class="{{ Route::is('spare.part') ? 'active' : '' }}">Spare Parts</a></li>
-                <li class="has-dd">
-                    <a href="#">Service <i class="caret"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="installation.html">Installation</a></li>
-                        <li><a href="modernization.html">Modernization</a></li>
-                        <li><a href="service-maintenance.html">Service &amp; Maintenance</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ route('project') }}">Project</a></li>
-                <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                <li><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="{{ route('gallery') }}" class="{{ Route::is('gallery*') ? 'active' : '' }}">Gallery</a></li>
+                <li><a href="{{ route('contact') }}" class="{{ Route::is('contact') ? 'active' : '' }}">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-actions">

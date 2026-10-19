@@ -8,8 +8,8 @@
                 <h1>Building the future with <em>trust</em> &amp; engineering</h1>
                 <p>Reliable vertical-transport, power and automation systems delivered with uncompromising safety
                     and 24/7 support.</p>
-                <div class="btns"><a href="products.html" class="btn btn-primary">Explore Products →</a><a
-                        href="about.html" class="btn btn-ghost">About Us</a></div>
+                <div class="btns"><a href="{{ route('product') }}" class="btn btn-primary">Explore Products →</a><a
+                        href="{{ route('about') }}" class="btn btn-ghost">About Us</a></div>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <h1>Moving people <em>safely</em>, every single day</h1>
                 <p>From high-rise towers to private villas — premium elevators and escalators tailored to every
                     building.</p>
-                <div class="btns"><a href="lift.html" class="btn btn-primary">Our Lifts →</a><button
+                <div class="btns"><a href="{{ route('concern.elevator') }}" class="btn btn-primary">Unicorn Elevator →</a><button
                         class="btn btn-ghost" data-open-quote>Request a Quote</button></div>
             </div>
         </div>
@@ -32,8 +32,8 @@
                 <h1>Always on. <em>24/7</em> expert support.</h1>
                 <p>Certified engineers, genuine spare parts and fast response to keep your equipment running without
                     a pause.</p>
-                <div class="btns"><a href="service-maintenance.html" class="btn btn-primary">Our Services
-                        →</a><a href="contact.html" class="btn btn-ghost">Contact Us</a></div>
+                <div class="btns"><a href="{{ route('concern.care') }}" class="btn btn-primary">Unicorn Care
+                        →</a><a href="{{ route('contact') }}" class="btn btn-ghost">Contact Us</a></div>
             </div>
         </div>
     </div>
