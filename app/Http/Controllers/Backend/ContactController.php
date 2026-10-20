@@ -10,7 +10,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::latest()->get();
         return view('backend.pages.contacts.index', compact('contacts'));
     }
 
@@ -21,29 +21,5 @@ class ContactController extends Controller
 
         notify()->success('Contact deleted successfully.');
         return redirect()->route('contacts.index');
-    }
-
-    public function recycleBin()
-    {
-        $contacts = Contact::onlyTrashed()->get();
-        return view('backend.pages.Recycle.contact', compact('contacts'));
-    }
-
-    public function restore($id)
-    {
-        $contact = Contact::onlyTrashed()->findOrFail($id);
-        $contact->restore();
-
-        notify()->success('Contact restored successfully.');
-        return redirect()->route('contacts.recycleBin');
-    }
-
-    public function forceDelete($id)
-    {
-        $contact = Contact::onlyTrashed()->findOrFail($id);
-        $contact->forceDelete();
-
-        notify()->success('Contact permanently deleted.');
-        return redirect()->route('contacts.recycleBin');
     }
 }

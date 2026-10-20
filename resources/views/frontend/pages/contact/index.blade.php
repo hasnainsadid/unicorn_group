@@ -26,7 +26,18 @@
                 <div class="form-card reveal d2">
                     <div id="cFormWrap">
                         <h3>Send us a message</h3>
-                        <form class="vform" id="contactForm" novalidate>
+                        <form class="vform" id="contactForm" action="{{ route('contact.store') }}" method="POST"
+                            novalidate>
+                            @csrf
+
+                            {{-- Spam trap: manush dekhbe na --}}
+                            <div aria-hidden="true"
+                                style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden">
+                                <label>Website</label>
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            <input type="hidden" name="form_time" value="{{ encrypt(now()->timestamp) }}">
+
                             <div class="row2">
                                 <div class="field"><label>Full name</label><input name="name" data-v="name">
                                     <div class="err">Please enter your name.</div>
@@ -36,7 +47,8 @@
                                 </div>
                             </div>
                             <div class="field"><label>Message</label>
-                                <textarea rows="4" name="message"></textarea>
+                                <textarea rows="4" name="message" data-v="message"></textarea>
+                                <div class="err">Please write at least 10 characters.</div>
                             </div>
                             <button class="btn btn-primary" type="submit">Send Message →</button>
                         </form>

@@ -21,7 +21,4 @@ Route::middleware([
     Route::resource('clients', ClientController::class)->except('show');
 
     Route::resource('contacts', ContactController::class)->only(['index', 'destroy']);
-    Route::get('contacts/recycle-bin', [ContactController::class, 'recycleBin'])->name('contacts.recycleBin');
-    Route::post('contacts/restore/{id}', [ContactController::class, 'restore'])->name('contacts.restore');
-    Route::delete('contacts/force-delete/{id}', [ContactController::class, 'forceDelete'])->name('contacts.forceDelete');
 });

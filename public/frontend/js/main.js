@@ -212,7 +212,7 @@
   addEventListener('keydown', e => { if (e.key === 'Escape') { if (modal && modal.classList.contains('open')) closeM(); if (lb && lb.classList.contains('open')) closeLb() } });
 
   /* form validation */
-  const rules = { name: v => v.trim().length > 1, email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), phone: v => /^[+()\d\s-]{7,}$/.test(v) };
+  const rules = { name: v => v.trim().length > 1, email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), phone: v => /^[+()\d\s-]{7,}$/.test(v), message: v => v.trim().length >= 10 };
   function wire(form, onOk) {
     if (!form) return;
     form.addEventListener('submit', ev => {
@@ -221,10 +221,10 @@
       if (!valid) return;
       const tok = document.querySelector('meta[name=csrf-token]');
       fetch(form.action, { method: 'POST', headers: { 'X-CSRF-TOKEN': tok ? tok.content : '', 'Accept': 'application/json' }, body: new FormData(form) })
-        .then(r => { if (!r.ok) throw new Error(r.status); onOk() })
-        .catch(() => alert('Sorry, we could not send your message. Please call us instead.'));
+        .then(r => { if (r.status === 429) throw new Error('rate'); if (!r.ok) throw new Error(r.status); onOk() })
+        .catch(err => alert(err.message === 'rate' ? 'Too many attempts. Please try again in a few minutes.' : 'Sorry, we could not send your message. Please call us instead.'));
     });
-    $$('input', form).forEach(i => i.addEventListener('input', () => i.closest('.field').classList.remove('invalid')));
+    $$('input, textarea', form).forEach(i => i.addEventListener('input', () => i.closest('.field').classList.remove('invalid')));
   }
   const qf = $('#quoteForm');
   wire(qf, () => {

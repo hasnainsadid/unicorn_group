@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\OthersController;
 use App\Models\Client;
 use App\Models\Slider;
@@ -43,8 +44,12 @@ Route::prefix('concerns')->name('concern.')->group(function () {
     Route::view('/landmark', 'frontend.pages.concerns.landmark')->name('landmark');
 });
 Route::get('/contact', function () {
-    return view('frontend.pages.contact.index'); 
+    return view('frontend.pages.contact.index');
 })->name('contact');
+
+Route::post('/contact', ContactController::class)
+    ->middleware('throttle:5,10')   // ek IP theke 10 minute e max 5 ta
+    ->name('contact.store');
 
 require __DIR__ . '/admin.php';
 

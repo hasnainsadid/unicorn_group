@@ -7,6 +7,7 @@
     <title>@yield('title') | {{ env('APP_NAME') }}</title>
     <meta name="description"
         content="Smart technology solutions: lifts, escalators, generators, substations, busbar trunking and automation.">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('frontend.layouts.partials.style')
 </head>
 
