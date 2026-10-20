@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\OthersController;
 use App\Models\Client;
 use App\Models\Slider;
@@ -20,9 +21,8 @@ Route::get('/management', function () {
 Route::get('/product', function () {
     return view('frontend.pages.product.index');
 })->name('product');
-Route::get('/gallery', function () {
-    return view('frontend.pages.gallery.index');
-})->name('gallery');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/gallery/{album}', [GalleryController::class, 'show'])->name('gallery.album');
 Route::prefix('gallery')->name('gallery.')->group(function () {
     Route::view('/projects', 'frontend.pages.gallery.projects')->name('projects');
     Route::view('/doors', 'frontend.pages.gallery.doors')->name('doors');
@@ -48,15 +48,14 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', ContactController::class)
-    ->middleware('throttle:5,10')   // ek IP theke 10 minute e max 5 ta
+    ->middleware('throttle:5,10') // ek IP theke 10 minute e max 5 ta
     ->name('contact.store');
 
 require __DIR__ . '/admin.php';
 
-
 Route::controller(OthersController::class)->group(function () {
-   Route::get('/migrate', 'migrate')->name('migration');
-   Route::get('/clear', 'clear')->name('clear');
-   Route::get('/composer', 'composer')->name('composer');
-   Route::get('/iseed', 'iseed')->name('iseed');
+    Route::get('/migrate', 'migrate')->name('migration');
+    Route::get('/clear', 'clear')->name('clear');
+    Route::get('/composer', 'composer')->name('composer');
+    Route::get('/iseed', 'iseed')->name('iseed');
 });

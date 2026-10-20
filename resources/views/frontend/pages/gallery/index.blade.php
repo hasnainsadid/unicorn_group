@@ -8,59 +8,32 @@
                 <h2 class="section-title">Our Work in <span>Folders</span></h2>
                 <p class="section-sub">Open a folder to see the pictures inside.</p>
             </div>
-            <div class="folders">
-                <a class="folder reveal d0" href="{{ route('gallery.projects') }}">
-                    <span class="f-tab"></span>
-                    <div class="f-back">
-                        <div class="f-photos">
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/03/project-06-2.jpg')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/03/project-05.jpg')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/03/project-04.jpg')"></i>
-                        </div>
-                        <div class="f-front">
-                            <div>
-                                <h3>Completed Projects</h3>
-                                <span>12 photos</span>
+
+            @if ($albums->count())
+                <div class="folders">
+                    @foreach ($albums as $album)
+                        <a class="folder reveal d{{ $loop->index % 3 }}" href="{{ route('gallery.album', $album->slug) }}">
+                            <span class="f-tab"></span>
+                            <div class="f-back">
+                                <div class="f-photos">
+                                    @foreach ($album->images->take(3) as $p)
+                                        <i style="background-image:url('{{ $p->url }}')"></i>
+                                    @endforeach
+                                </div>
+                                <div class="f-front">
+                                    <div>
+                                        <h3>{{ $album->title }}</h3>
+                                        <span>{{ $album->images->count() }} {{ Str::plural('photo', $album->images->count()) }}</span>
+                                    </div>
+                                    <b>→</b>
+                                </div>
                             </div>
-                            <b>→</b>
-                        </div>
-                    </div>
-                </a>
-                <a class="folder reveal d1" href="{{ route('gallery.doors') }}">
-                    <span class="f-tab"></span>
-                    <div class="f-back">
-                        <div class="f-photos">
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/baranda-door.png')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/staff-room-door-1.webp')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/chairman-entry-room-wooden-door.webp')"></i>
-                        </div>
-                        <div class="f-front">
-                            <div>
-                                <h3>Doors &amp; Entrances</h3>
-                                <span>6 photos</span>
-                            </div>
-                            <b>→</b>
-                        </div>
-                    </div>
-                </a>
-                <a class="folder reveal d2" href="{{ route('gallery.interiors') }}">
-                    <span class="f-tab"></span>
-                    <div class="f-back">
-                        <div class="f-photos">
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/loby-waiting-.png')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/Director-room-ads.webp')"></i>
-                            <i style="background-image:url('https://unicorngroupbd.com/wp-content/uploads/2026/04/meeting-room-ads-L.webp')"></i>
-                        </div>
-                        <div class="f-front">
-                            <div>
-                                <h3>Office Interiors</h3>
-                                <span>4 photos</span>
-                            </div>
-                            <b>→</b>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                        </a>
+                    @endforeach
+                </div>
+            @else
+                <p class="section-sub" style="text-align:center">Pictures are coming soon.</p>
+            @endif
         </div>
     </section>
 @endsection

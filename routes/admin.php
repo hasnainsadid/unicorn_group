@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AlbumController;
+use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\SliderController;
@@ -19,6 +21,13 @@ Route::middleware([
     Route::post('sliders/{slider}/toggle', [SliderController::class, 'toggle'])->name('sliders.toggle');
 
     Route::resource('clients', ClientController::class)->except('show');
+
+    Route::post('albums/reorder', [AlbumController::class, 'reorder'])->name('albums.reorder');
+    Route::resource('albums', AlbumController::class)->except('show');
+    Route::post('albums/{album}/images', [AlbumImageController::class, 'store'])->name('albums.images.store');
+    Route::post('albums/{album}/images/reorder', [AlbumImageController::class, 'reorder'])->name('albums.images.reorder');
+    Route::put('album-images/{image}', [AlbumImageController::class, 'update'])->name('album-images.update');
+    Route::delete('album-images/{image}', [AlbumImageController::class, 'destroy'])->name('album-images.destroy');
 
     Route::resource('contacts', ContactController::class)->only(['index', 'destroy']);
 });

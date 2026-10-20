@@ -4,7 +4,8 @@
     <div class="app-brand demo ">
         <a href="/dashboard" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ asset('backend/logo/unicorn_logo.png') }}" alt="Logo" height="40" class="app-brand-logo-default">
+                <img src="{{ asset('backend/logo/unicorn_logo.png') }}" alt="Logo" height="40"
+                    class="app-brand-logo-default">
             </span>
             <span class="app-brand-text demo menu-text fw-bold ms-3">Unicorn</span>
         </a>
@@ -45,6 +46,13 @@
                 <div>Clients</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->routeIs('albums.*') ? 'active' : '' }}">
+            <a href="{{ route('albums.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-photo"></i>
+                <div>Gallery</div>
+            </a>
+        </li>
+
         <!-- Forms -->
         <li class="menu-item">
             <a href="{{ route('contacts.index') }}" class="menu-link">
