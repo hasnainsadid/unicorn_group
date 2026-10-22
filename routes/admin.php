@@ -1,16 +1,18 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutSectionController;
 use App\Http\Controllers\Backend\AlbumController;
 use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Middleware\CheckUploads;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
+    'verified', CheckUploads::class
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard.index');
@@ -19,6 +21,8 @@ Route::middleware([
 
     Route::resource('sliders', SliderController::class);
     Route::post('sliders/{slider}/toggle', [SliderController::class, 'toggle'])->name('sliders.toggle');
+
+    Route::resource('about-sections', AboutSectionController::class)->only(['index', 'edit', 'update']);
 
     Route::resource('clients', ClientController::class)->except('show');
 

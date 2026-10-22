@@ -40,6 +40,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->routeIs('about-sections.*') ? 'active' : '' }}">
+            <a href="{{ route('about-sections.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-layout-list"></i>
+                <div>About Sections</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ request()->routeIs('clients.*') ? 'active' : '' }}">
             <a href="{{ route('clients.index') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-users-group"></i>
