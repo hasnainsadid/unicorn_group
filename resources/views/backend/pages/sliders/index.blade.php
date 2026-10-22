@@ -42,14 +42,14 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="{{ route('sliders.edit', $slider->id) }}" class="btn text-warning btn-icon">
+                                    <a href="{{ route('sliders.edit', $slider->id) }}" class="btn btn-sm btn-label-primary">
                                         <i class="icon-base ti tabler-edit"></i>
                                     </a>
                                     <form action="{{ route('sliders.destroy', $slider->id) }}" method="POST"
                                         class="d-inline" onsubmit="return confirm('Delete this slide?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn text-danger btn-icon">
+                                        <button type="submit" class="btn btn-label-danger btn-icon">
                                             <i class="icon-base ti tabler-trash"></i>
                                         </button>
                                     </form>

@@ -16,7 +16,7 @@
                         <td><img src="{{ $s->main_url }}" alt="" style="width:70px;height:48px;object-fit:cover;border-radius:6px"></td>
                         <td>{{ $s->label }}</td>
                         <td>{{ $s->title }}</td>
-                        <td class="text-end"><a href="{{ route('about-sections.edit', $s) }}" class="btn btn-sm btn-label-primary">Edit</a></td>
+                        <td class="text-end"><a href="{{ route('about-sections.edit', $s) }}" class="btn btn-sm btn-label-primary"><i class="icon-base ti tabler-edit"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>

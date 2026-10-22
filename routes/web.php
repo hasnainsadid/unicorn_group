@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\OthersController;
 use App\Models\Client;
+use App\Models\Management;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,8 @@ Route::get('/about', function () {
     return view('frontend.pages.about.index');
 })->name('about');
 Route::get('/management', function () {
-    return view('frontend.pages.management.index');
+    $managements = Management::ordered()->get();
+    return view('frontend.pages.management.index', compact('managements'));
 })->name('management');
 Route::get('/product', function () {
     return view('frontend.pages.product.index');

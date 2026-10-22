@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AlbumController;
 use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\ManagementController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Middleware\CheckUploads;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::middleware([
     Route::resource('about-sections', AboutSectionController::class)->only(['index', 'edit', 'update']);
 
     Route::resource('clients', ClientController::class)->except('show');
+
+    Route::resource('managements', ManagementController::class)->only(['index', 'edit', 'update']);
 
     Route::post('albums/reorder', [AlbumController::class, 'reorder'])->name('albums.reorder');
     Route::resource('albums', AlbumController::class)->except('show');

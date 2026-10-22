@@ -23,16 +23,13 @@
                                 {{-- <td><span class="badge bg-label-primary me-1">Active</span></td> --}}
                                 <td>{!! wordwrap($contact->message, 40, '<br>') !!}</td>
                                 <td>
-                                    <a class="dropdown-item waves-effect text-danger"
-                                        onclick="document.getElementById('delete-{{ $contact->id }}').submit();"
-                                        href="javascript:void(0);">
-                                        <i class="icon-base ti tabler-trash me-1"></i>
-                                    </a>
-                                    <form id="delete-{{ $contact->id }}"
-                                        action="{{ route('contacts.destroy', $contact->id) }}" method="post"
-                                        class="d-none">
+                                    <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST"
+                                        class="d-inline" onsubmit="return confirm('Delete this message?');">
                                         @csrf
-                                        @method('delete')
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-label-danger btn-icon">
+                                            <i class="icon-base ti tabler-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
