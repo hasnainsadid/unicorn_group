@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ManagementController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Middleware\CheckUploads;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified', CheckUploads::class
+    'verified', CheckUploads::class,
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.pages.dashboard.index');
@@ -37,4 +38,7 @@ Route::middleware([
     Route::delete('album-images/{image}', [AlbumImageController::class, 'destroy'])->name('album-images.destroy');
 
     Route::resource('contacts', ContactController::class)->only(['index', 'destroy']);
+
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 });

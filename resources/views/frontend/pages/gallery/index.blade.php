@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', 'Gallery')
+@section('meta_description', 'Browse photo folders of completed projects and installations by Unicorn Group.')
 @section('content')
     @include('frontend.layouts.partials.breadcrumb')
     <section>

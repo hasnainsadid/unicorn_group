@@ -185,7 +185,59 @@ function deletePdf($file)
     }
 }
 
-function setting()
+/**
+ * Settings helper: setting('phone'), setting('site_name', 'Default')
+ * Shob setting ek bar-i DB theke ane ar cache kore rakhe.
+ */
+function setting(string $key, $default = null)
 {
-    return DB::table('settings')->first();
+    static $all = null;
+
+    if ($all === null) {
+        try {
+            $all = \Illuminate\Support\Facades\Cache::rememberForever('settings', function () {
+                return \App\Models\Setting::pluck('value', 'key')->all();
+            });
+        } catch (\Throwable $e) {
+            $all = [];   // migrate howar age / DB nei: site cholbe, default value niye
+        }
+    }
+
+    $value = $all[$key] ?? null;
+
+    return ($value === null || $value === '') ? $default : $value;
+}
+
+/** "+880 1335-106960" -> "tel:+8801335106960" */
+function tel_href($number): string
+{
+    return 'tel:' . preg_replace('/[^+\d]/', '', (string) $number);
+}
+
+/** Google Maps embed link (address ba "lat,lng" theke). */
+function map_embed_url(): ?string
+{
+    $q = setting('map_query') ?: setting('address');
+
+    return $q ? 'https://maps.google.com/maps?q=' . urlencode($q) . '&t=m&z=14&output=embed&iwloc=near' : null;
+}
+
+/** Text er moddhe ekta word ke <em> (ba onno tag) e wrap kore. Shob escape kora, tai safe. */
+function highlight_html(?string $text, ?string $word, string $tag = 'em'): string
+{
+    $text = e((string) $text);
+    $word = trim((string) $word);
+    if ($word === '') {
+        return $text;
+    }
+
+    $word = e($word);
+    $pos  = mb_stripos($text, $word);
+    if ($pos === false) {
+        return $text;
+    }
+
+    return mb_substr($text, 0, $pos)
+        . "<{$tag}>" . mb_substr($text, $pos, mb_strlen($word)) . "</{$tag}>"
+        . mb_substr($text, $pos + mb_strlen($word));
 }

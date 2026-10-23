@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') | {{ env('APP_NAME') }}</title>
-    <meta name="description"
-        content="Smart technology solutions: lifts, escalators, generators, substations, busbar trunking and automation.">
+    @include('frontend.layouts.partials.seo')
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('frontend.layouts.partials.style')
 </head>

@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', 'Management')
+@section('meta_description', 'Meet the leadership of Unicorn Group: our Chairman, Managing Director and Deputy Managing Director, and their vision for the group.')
 @section('content')
     @include('frontend.layouts.partials.breadcrumb')
 

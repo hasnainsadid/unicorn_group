@@ -1,12 +1,20 @@
 <div class="topbar">
     <div class="container">
         <div class="left">
-            <a href="tel:+8801335106960">📞 +880 1335-106960</a>
-            <a href="mailto:unicorureltd@gmail.com">✉ unicorureltd@gmail.com</a>
+            @if (setting('phone'))
+                <a href="{{ tel_href(setting('phone')) }}">📞 {{ setting('phone') }}</a>
+            @endif
+            @if (setting('email'))
+                <a href="mailto:{{ setting('email') }}">✉ {{ setting('email') }}</a>
+            @endif
         </div>
         <div class="right">
-            <span>📍 Ujjal Tower, L-5, 362, DIT Road, East Rampura, Dhaka 1219</span>
-            <span>🕘 Sat – Thu · 9:00 AM – 6:00 PM</span>
+            @if (setting('address'))
+                <span>📍 {{ setting('address') }}</span>
+            @endif
+            @if (setting('working_hours'))
+                <span>🕘 {{ setting('working_hours') }}</span>
+            @endif
         </div>
     </div>
 </div>

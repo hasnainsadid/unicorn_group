@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', $album->title)
+  @section('meta_description', $album->description ?: 'Photos from ' . $album->title . ' by ' . setting('site_name') . '.')
+  @section('og_image', $album->images->first()?->url)
 
 @section('crumbs')
     <span class="sep">/</span><a href="{{ route('gallery') }}">Gallery</a>

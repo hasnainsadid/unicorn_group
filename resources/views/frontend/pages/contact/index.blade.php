@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', 'Contact Us')
+@section('meta_description', 'Contact Unicorn Group for quotations, technical support and 24/7 breakdown service. Find our address, phone, email and map.')
 @section('content')
     <section>
         <div class="container">
@@ -9,16 +10,28 @@
             </div>
             <div class="contact-grid">
                 <div class="info-cards">
-                    <div class="info reveal"><i>📍</i>
-                        <div><b>Address</b><span>Ujjal Tower, L-5, 362, DIT Road, East Rampura, Dhaka 1219</span></div>
-                    </div>
-                    <div class="info reveal d1"><i>📞</i>
-                        <div><b>Phone</b><span>+880 1335-106960<br>+880 1743-389578 (24/7 support)</span></div>
-                    </div>
-                    <div class="info reveal d2"><i>✉</i>
-                        <div><b>Email</b><span>
-                                unicornventureltd@gmail.com<br>pialtp4@gmail.com</span></div>
-                    </div>
+                    @if (setting('address'))
+                        <div class="info reveal"><i>📍</i>
+                            <div><b>Address</b><span>{{ setting('address') }}</span></div>
+                        </div>
+                    @endif
+                    @if (setting('phone'))
+                        <div class="info reveal d1"><i>📞</i>
+                            <div><b>Phone</b><span>{{ setting('phone') }}@if (setting('phone2'))
+                                        <br>{{ setting('phone2') }} (24/7 support)
+                                    @endif
+                                </span>
+                            </div>
+                        </div>
+                    @endif
+                    @if (setting('email'))
+                        <div class="info reveal d2"><i>✉</i>
+                            <div><b>Email</b><span>{{ setting('email') }}@if (setting('email2'))
+                                        <br>{{ setting('email2') }}
+                                    @endif
+                                </span></div>
+                        </div>
+                    @endif
                     <div class="info reveal d3"><i>🕘</i>
                         <div><b>Support</b><span>24/7 breakdown support</span></div>
                     </div>
@@ -60,8 +73,9 @@
                     </div>
                 </div>
             </div>
-            <iframe class="map-big reveal" loading="lazy" title="Office location"
-                src="https://maps.google.com/maps?q=Ujjal%20Tower%2C%20L-5%2C%20362%2C%20DIT%20Road%2C%20East%20Rampura%20Dhaka%201219&t=m&z=14&output=embed&iwloc=near"></iframe>
+            @if (map_embed_url())
+                <iframe class="map-big reveal" loading="lazy" title="Office location" src="{{ map_embed_url() }}"></iframe>
+            @endif
         </div>
     </section>
 @endsection

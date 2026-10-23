@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\Frontend\SeoController;
 use App\Http\Controllers\OthersController;
 use App\Models\Client;
 use App\Models\Management;
@@ -52,6 +53,10 @@ Route::get('/contact', function () {
 Route::post('/contact', ContactController::class)
     ->middleware('throttle:5,10') // ek IP theke 10 minute e max 5 ta
     ->name('contact.store');
+
+
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [SeoController::class, 'robots']);
 
 require __DIR__ . '/admin.php';
 

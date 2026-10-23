@@ -1,25 +1,37 @@
+@php
+    $stats = [];
+    for ($i = 1; $i <= 5; $i++) {
+        if (setting("stat{$i}_value") !== null && setting("stat{$i}_label")) {
+            $stats[] = [
+                'icon'   => setting("stat{$i}_icon"),
+                'value'  => (int) setting("stat{$i}_value"),
+                'suffix' => setting("stat{$i}_suffix", ''),
+                'label'  => setting("stat{$i}_label"),
+            ];
+        }
+    }
+@endphp
+
+@if (count($stats))
 <section class="stats band" id="stats">
     <div class="container">
-        <div class="band-head reveal"><span class="eyebrow">By the numbers</span>
-            <h2>Engineering that <em>moves</em> cities, quietly and safely.</h2>
+        <div class="band-head reveal">
+            @if (setting('stats_eyebrow'))
+                <span class="eyebrow">{{ setting('stats_eyebrow') }}</span>
+            @endif
+            @if (setting('stats_title'))
+                <h2>{!! highlight_html(setting('stats_title'), setting('stats_highlight')) !!}</h2>
+            @endif
         </div>
         <div class="stats-grid">
-            <div class="stat reveal d0">
-                <div class="si">🏆</div><b data-count="25" data-suffix="+">0</b><span>Years Experience</span>
-            </div>
-            <div class="stat reveal d1">
-                <div class="si">👷</div><b data-count="150" data-suffix="+">0</b><span>Employees</span>
-            </div>
-            <div class="stat reveal d2">
-                <div class="si">🤝</div><b data-count="320" data-suffix="+">0</b><span>Happy Clients</span>
-            </div>
-            <div class="stat reveal d3">
-                <div class="si">🏢</div><b data-count="540" data-suffix="+">0</b><span>Projects Done</span>
-            </div>
-            <div class="stat reveal d4">
-                <div class="si">🛗</div><b data-count="2800" data-suffix="+">0</b><span>Units
-                    Installed</span>
-            </div>
+            @foreach ($stats as $s)
+                <div class="stat reveal d{{ $loop->index }}">
+                    <div class="si">{{ $s['icon'] }}</div>
+                    <b data-count="{{ $s['value'] }}" data-suffix="{{ $s['suffix'] }}">0</b>
+                    <span>{{ $s['label'] }}</span>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif

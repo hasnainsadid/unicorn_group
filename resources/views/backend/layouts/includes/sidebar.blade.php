@@ -67,10 +67,17 @@
         </li>
 
         <!-- Forms -->
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs('contacts.*') ? 'active' : '' }}">
             <a href="{{ route('contacts.index') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-message"></i>
                 <div>Contact Us</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ request()->routeIs('settings.*') ? 'active' : '' }}">
+            <a href="{{ route('settings.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-settings"></i>
+                <div>Settings</div>
             </a>
         </li>
     </ul>
