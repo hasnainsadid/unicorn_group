@@ -1652,3 +1652,143 @@ footer .logo-word-img {
 .client:hover img {
     transform: scale(1.06);
 }
+
+/* =========================================================
+   Header dropdown (Concerns menu): premium look
+   ========================================================= */
+@media (min-width: 901px) {
+    .dropdown {
+        top: calc(100% + 8px);
+        min-width: 276px;
+        padding: 12px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(20, 29, 46, 0.98), rgba(8, 12, 21, 0.98));
+        border: 1px solid rgba(245, 165, 36, 0.28);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+    }
+    /* little arrow on top */
+    .menu > li > .dropdown::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: 34px;
+        width: 13px;
+        height: 13px;
+        background: #141d2e;
+        border-left: 1px solid rgba(245, 165, 36, 0.4);
+        border-top: 1px solid rgba(245, 165, 36, 0.4);
+        transform: rotate(45deg);
+    }
+    /* invisible bridge so the menu does not close while the mouse crosses the gap */
+    .menu > li > .dropdown::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -16px;
+        height: 16px;
+    }
+    .dropdown .sub {
+        left: calc(100% + 10px);
+        top: -12px;
+        min-width: 250px;
+        padding: 12px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(20, 29, 46, 0.98), rgba(8, 12, 21, 0.98));
+        border: 1px solid rgba(245, 165, 36, 0.28);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+    }
+    .dropdown .sub::before {
+        content: "";
+        position: absolute;
+        left: -14px;
+        top: 0;
+        width: 14px;
+        height: 100%;
+    }
+
+    .dropdown a {
+        position: relative;
+        padding: 12px 16px 12px 20px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.86);
+        letter-spacing: 0.01em;
+    }
+    .dropdown a::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 50%;
+        width: 3px;
+        height: 0;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #ffcb6b, #f5a524);
+        transform: translateY(-50%);
+        transition: height 0.25s;
+    }
+    .dropdown a:hover,
+    .dropdown li:hover > a,
+    .dropdown a.active {
+        background: linear-gradient(90deg, rgba(245, 165, 36, 0.18), rgba(245, 165, 36, 0));
+        color: #ffcb6b;
+        padding-left: 24px;
+    }
+    .dropdown a:hover::before,
+    .dropdown li:hover > a::before,
+    .dropdown a.active::before {
+        height: 20px;
+    }
+    .dropdown li + li {
+        margin-top: 2px;
+    }
+    .dropdown li.has-sub > a::after {
+        content: "\203A";
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(245, 165, 36, 0.14);
+        color: #f5a524;
+        font-size: 1.05rem;
+        line-height: 1;
+        transition: 0.25s;
+    }
+    .dropdown li.has-sub:hover > a::after {
+        background: #f5a524;
+        color: #1b1300;
+        transform: translateX(3px);
+    }
+
+    /* items slide in one after another */
+    .menu > li:hover > .dropdown > li,
+    .dropdown li.has-sub:hover > .sub > li {
+        animation: ddIn 0.35s both;
+    }
+    .dropdown > li:nth-child(1), .sub > li:nth-child(1) { animation-delay: 0.02s !important; }
+    .dropdown > li:nth-child(2), .sub > li:nth-child(2) { animation-delay: 0.06s !important; }
+    .dropdown > li:nth-child(3), .sub > li:nth-child(3) { animation-delay: 0.10s !important; }
+    .dropdown > li:nth-child(4), .sub > li:nth-child(4) { animation-delay: 0.14s !important; }
+    .dropdown > li:nth-child(5), .sub > li:nth-child(5) { animation-delay: 0.18s !important; }
+    .dropdown > li:nth-child(6), .sub > li:nth-child(6) { animation-delay: 0.22s !important; }
+}
+@keyframes ddIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* phone menu: gold line on the left of the sub menus */
+@media (max-width: 900px) {
+    .dropdown,
+    .dropdown .sub {
+        margin-left: 14px;
+        padding-left: 12px;
+        border-left: 2px solid rgba(245, 165, 36, 0.35);
+    }
+    .dropdown a.active { color: #ffcb6b; }
+}

@@ -1,0 +1,240 @@
+/* =========================================================
+   Catalogue flip-book (PDF viewer that works like a book)
+   ========================================================= */
+.cat-section { padding: 80px 0; }
+
+.flipbook {
+    --r: 1.4361;                       /* page height / width (set by JS from the PDF) */
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 68px 20px;
+    border-radius: 24px;
+    background: radial-gradient(120% 90% at 50% 0%, #17243b 0%, #0a0f19 72%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    color: #cbd5e1;
+}
+
+.fb-stage { position: relative; display: flex; justify-content: center; }
+
+.fb-book {
+    position: relative;
+    width: min(100%, 920px, calc((100vh - 270px) * 2 / var(--r)));
+    aspect-ratio: calc(2 / var(--r));
+    transition: opacity 0.16s;
+    cursor: pointer;
+}
+.flipbook.single .fb-book {
+    width: min(100%, 520px, calc((100vh - 270px) / var(--r)));
+    aspect-ratio: calc(1 / var(--r));
+}
+.fb-book.fb-fade { opacity: 0; }
+
+.fb-spread {
+    position: absolute;
+    inset: 0;
+    perspective: 3800px;
+    transition: transform 0.75s cubic-bezier(0.45, 0.05, 0.25, 1);
+}
+
+/* pages */
+.fb-pg {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+}
+.fb-left { left: 0; border-radius: 5px 0 0 5px; }
+.fb-right { left: 50%; border-radius: 0 5px 5px 0; }
+.fb-pg img,
+.fb-leaf .face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+.fb-pg img:not([src]),
+.fb-leaf .face img:not([src]) { visibility: hidden; }
+.fb-pg.empty { visibility: hidden; box-shadow: none; }
+
+/* paper shading near the spine */
+.fb-pg::after,
+.fb-leaf .face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.fb-left::after,
+.fb-leaf.back .face:not(.bk)::after,
+.fb-leaf.fwd .face.bk::after { background: linear-gradient(to left, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0) 14%); }
+.fb-right::after,
+.fb-leaf.fwd .face:not(.bk)::after,
+.fb-leaf.back .face.bk::after { background: linear-gradient(to right, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0) 14%); }
+
+/* page still loading */
+.fb-pg.loading::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.12);
+    border-top-color: #f5a524;
+    animation: fbspin 0.8s linear infinite;
+    z-index: 2;
+}
+@keyframes fbspin { to { transform: rotate(360deg); } }
+
+/* the turning page */
+.fb-leaf {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 5;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.45, 0.05, 0.25, 1);
+}
+.fb-leaf.fwd { left: 50%; transform-origin: left center; }
+.fb-leaf.back { left: 0; transform-origin: right center; }
+.fb-leaf .face {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.fb-leaf .face.bk { transform: rotateY(180deg); }
+
+/* single page (phones) */
+.flipbook.single .fb-pg { width: 100%; }
+.flipbook.single .fb-left { display: none; }
+.flipbook.single .fb-right { left: 0; border-radius: 5px; }
+.flipbook.single .fb-right::after { display: none; }
+
+/* arrows */
+.fb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 165, 36, 0.55);
+    background: rgba(10, 15, 25, 0.9);
+    color: #f5a524;
+    font-size: 1.7rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 8;
+}
+.fb-nav:hover:not(:disabled) { background: #f5a524; color: #1b1300; transform: translateY(-50%) scale(1.08); }
+.fb-nav:disabled { opacity: 0.25; cursor: default; }
+.fb-prev { left: -58px; }
+.fb-next { right: -58px; }
+
+/* toolbar */
+.fb-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.fb-count { min-width: 120px; text-align: center; font-weight: 600; color: #fff; }
+.fb-go {
+    width: 74px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    text-align: center;
+    font: inherit;
+}
+.fb-go::placeholder { color: #8a97ab; }
+.fb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.fb-btn:hover { background: #f5a524; color: #1b1300; border-color: #f5a524; }
+.fb-hint { width: 100%; text-align: center; font-size: 0.78rem; color: #7f8ca0; }
+
+/* loading cover */
+.fb-loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 24px;
+    background: rgba(8, 12, 20, 0.92);
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+.fb-loading a { color: #f5a524; text-decoration: underline; }
+.flipbook.ready .fb-loading { opacity: 0; pointer-events: none; }
+
+/* full screen */
+.flipbook:fullscreen,
+.flipbook.is-full {
+    max-width: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 76px;
+    background: #070a10;
+}
+.flipbook:fullscreen .fb-book { width: min(100%, calc((100vh - 130px) * 2 / var(--r))); }
+.flipbook.single:fullscreen .fb-book { width: min(100%, calc((100vh - 130px) / var(--r))); }
+
+@media (max-width: 900px) {
+    .flipbook { padding: 18px 12px 14px; border-radius: 18px; }
+    .fb-prev { left: -4px; }
+    .fb-next { right: -4px; }
+    .fb-nav { width: 40px; height: 40px; font-size: 1.4rem; background: rgba(10, 15, 25, 0.78); }
+}
+@media (max-width: 700px) {
+    .cat-section { padding: 56px 0; }
+    .fb-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fb-leaf, .fb-spread { transition-duration: 0.01s; }
+}
+
+/* exit full screen button: always visible on top while in full screen */
+.flipbook.is-full .fb-full,
+.flipbook:fullscreen .fb-full {
+  position: fixed; top: 16px; right: 16px; z-index: 50;
+  background: #e8a317; color: #111; border-color: #e8a317; font-weight: 700;
+}
+.flipbook .fb-full.fb-exit { background: #e8a317; color: #111; }

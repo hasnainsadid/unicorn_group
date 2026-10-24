@@ -49,4 +49,5 @@
             </aside>
         </div>
     </section>
+    @include('frontend.pages.concern.partials.catalogue', ['pdf' => 'frontend/catalogs/hidoks.pdf', 'title' => 'Hidoks'])
 @endsection
