@@ -50,6 +50,9 @@ Route::prefix('concerns')->name('concern.')->group(function () {
     Route::view('/care', 'frontend.pages.concerns.care')->name('care');
     Route::view('/engineering', 'frontend.pages.concerns.engineering.index')->name('engineering');
     Route::view('/engineering/generator', 'frontend.pages.concerns.engineering.generator')->name('engineering.generator');
+    Route::view('/engineering/generator/cummins', 'frontend.pages.concerns.engineering.generator.cummins')->name('engineering.generator.cummins');
+    Route::view('/engineering/generator/perkins', 'frontend.pages.concerns.engineering.generator.perkins')->name('engineering.generator.perkins');
+    Route::view('/engineering/generator/ricardo', 'frontend.pages.concerns.engineering.generator.ricardo')->name('engineering.generator.ricardo');
     Route::view('/engineering/substation', 'frontend.pages.concerns.engineering.substation')->name('engineering.substation');
     Route::view('/engineering/design', 'frontend.pages.concerns.engineering.design')->name('engineering.design');
     Route::view('/landmark', 'frontend.pages.concerns.landmark')->name('landmark');

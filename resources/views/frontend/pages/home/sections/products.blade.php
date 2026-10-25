@@ -1,7 +1,7 @@
 <section class="alt" id="concerns">
     <div class="container">
         <div class="section-head center reveal"><span class="eyebrow">Our Concerns</span>
-            <h2 class="section-title">Six concerns, one standard of <span>quality</span></h2>
+            <h2 class="section-title">Seven concerns, one standard of <span>quality</span></h2>
             <p class="section-sub">Each division is run as a specialist business, and all of them work to the same
                 values.</p>
         </div>

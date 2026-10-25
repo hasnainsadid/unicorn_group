@@ -73,8 +73,10 @@
                             </ul>
                         </li>
 
-                        <li><a href="{{ route('concern.energy') }}"
-                                class="{{ Route::is('concern.energy') ? 'active' : '' }}">Unicorn Energy</a></li>
+                        {{-- <li><a href="{{ route('concern.energy') }}" --}}
+                        <li><a href="https://unicorn-energy-calculator-913114722513.asia-south1.run.app/"
+                                target="_blank" class="{{ Route::is('concern.energy') ? 'active' : '' }}">Unicorn
+                                Energy</a></li>
                         <li><a href="{{ route('concern.care') }}"
                                 class="{{ Route::is('concern.care') ? 'active' : '' }}">Unicorn Care</a></li>
 
@@ -84,7 +86,24 @@
                             <ul class="sub">
                                 <li class="mobile-only"><a href="{{ route('concern.engineering') }}">All What We Do</a>
                                 </li>
-                                <li><a href="{{ route('concern.engineering.generator') }}">Generator</a></li>
+                                <li class="has-sub">
+                                    <a href="{{ route('concern.engineering.generator') }}"
+                                        class="{{ Route::is('concern.engineering.generator*') ? 'active' : '' }}">Generator</a>
+                                    <ul class="sub">
+                                        <li class="mobile-only"><a
+                                                href="{{ route('concern.engineering.generator') }}">All Generators</a>
+                                        </li>
+                                        <li><a href="{{ route('concern.engineering.generator.cummins') }}"
+                                                class="{{ Route::is('concern.engineering.generator.cummins') ? 'active' : '' }}">Cummins</a>
+                                        </li>
+                                        <li><a href="{{ route('concern.engineering.generator.perkins') }}"
+                                                class="{{ Route::is('concern.engineering.generator.perkins') ? 'active' : '' }}">Perkins</a>
+                                        </li>
+                                        <li><a href="{{ route('concern.engineering.generator.ricardo') }}"
+                                                class="{{ Route::is('concern.engineering.generator.ricardo') ? 'active' : '' }}">Ricardo</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li><a href="{{ route('concern.engineering.substation') }}">Sub-station</a></li>
                                 <li><a href="{{ route('concern.engineering.design') }}">Design Drawing Consultancy
                                         (2D-3D)</a></li>
