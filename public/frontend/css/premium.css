@@ -1792,3 +1792,23 @@ footer .logo-word-img {
     }
     .dropdown a.active { color: #ffcb6b; }
 }
+/* Header: menu starts right after the logo, transparent background */
+@media (min-width: 901px) {
+    .nav-wrap {
+        justify-content: flex-start;
+        gap: 48px;
+    }
+    nav.main-nav {
+        background: transparent;
+        margin-right: auto;
+    }
+    .nav-actions {
+        margin-left: 0;
+    }
+}
+/* phone: the slide-in menu keeps a solid background */
+@media (max-width: 900px) {
+    nav.main-nav {
+        background: #070a10;
+    }
+}

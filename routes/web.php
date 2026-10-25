@@ -38,6 +38,14 @@ Route::prefix('concerns')->name('concern.')->group(function () {
     Route::view('/elevator/blt', 'frontend.pages.concerns.elevator.blt')->name('elevator.blt');
     Route::view('/elevator/hidoks', 'frontend.pages.concerns.elevator.hidoks')->name('elevator.hidoks');
     Route::view('/elevator/sigma', 'frontend.pages.concerns.elevator.sigma')->name('elevator.sigma');
+    // Elevator brands (add inside the concern. group, next to hidoks/blt/sigma)
+    Route::view('/elevator/marsha', 'frontend.pages.concerns.elevator.marsha')->name('elevator.marsha');
+    Route::view('/elevator/ife', 'frontend.pages.concerns.elevator.ife')->name('elevator.ife');
+    Route::view('/elevator/xizi', 'frontend.pages.concerns.elevator.xizi')->name('elevator.xizi');
+    Route::view('/elevator/fuji-sj', 'frontend.pages.concerns.elevator.fuji-sj')->name('elevator.fuji-sj');
+    Route::view('/elevator/ningbo', 'frontend.pages.concerns.elevator.ningbo')->name('elevator.ningbo');
+    Route::view('/elevator/mrf', 'frontend.pages.concerns.elevator.mrf')->name('elevator.mrf');
+
     Route::view('/energy', 'frontend.pages.concerns.energy')->name('energy');
     Route::view('/care', 'frontend.pages.concerns.care')->name('care');
     Route::view('/engineering', 'frontend.pages.concerns.engineering.index')->name('engineering');
@@ -53,7 +61,6 @@ Route::get('/contact', function () {
 Route::post('/contact', ContactController::class)
     ->middleware('throttle:5,10') // ek IP theke 10 minute e max 5 ta
     ->name('contact.store');
-
 
 Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
 Route::get('/robots.txt', [SeoController::class, 'robots']);
