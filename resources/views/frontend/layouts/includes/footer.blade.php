@@ -37,14 +37,11 @@
             </ul>
         </div>
         <div>
-            <h4>Products</h4>
+            <h4>Our Concerns</h4>
             <ul>
-                <li><a href="lift.html">Lift</a></li>
-                <li><a href="escalator.html">Escalator</a></li>
-                <li><a href="moving-walkways.html">Moving Walkways</a></li>
-                <li><a href="generator.html">Generator</a></li>
-                <li><a href="substation.html">Substation</a></li>
-                <li><a href="busbar-trunking.html">Busbar Trunking</a></li>
+                @foreach (\App\Models\Concern::tree() as $concern)
+                    <li><a href="{{ $concern->url }}">{{ $concern->title }}</a></li>
+                @endforeach
             </ul>
         </div>
         <div>
@@ -67,7 +64,8 @@
         </div>
     </div>
     <div class="copy">
-        <div class="container"><span>© <span id="year"></span> {{ setting('site_name', 'Unicorn Group') }}. All rights reserved.</span>
+        <div class="container"><span>© <span id="year"></span> {{ setting('site_name', 'Unicorn Group') }}. All
+                rights reserved.</span>
             {{-- <span>Lifts · Escalators · Generators · Substations · Busbar Trunking</span> --}}
         </div>
     </div>
