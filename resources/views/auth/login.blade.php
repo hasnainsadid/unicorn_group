@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login | Vuexy</title>
+    <title>Login | {{ setting('site_name') }}</title>
     <link rel="stylesheet" href="{{ asset('backend') }}/vendor/css/pages/page-auth.css">
     @include('backend.layouts.partials.style')
 </head>

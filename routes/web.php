@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ConcernController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Frontend\SeoController;
@@ -31,32 +32,12 @@ Route::prefix('gallery')->name('gallery.')->group(function () {
     Route::view('/doors', 'frontend.pages.gallery.doors')->name('doors');
     Route::view('/interiors', 'frontend.pages.gallery.interiors')->name('interiors');
 });
-// Concerns (menu: Concerns)
-Route::prefix('concerns')->name('concern.')->group(function () {
-    Route::view('/venture', 'frontend.pages.concerns.venture')->name('venture');
-    Route::view('/elevator', 'frontend.pages.concerns.elevator.index')->name('elevator');
-    Route::view('/elevator/blt', 'frontend.pages.concerns.elevator.blt')->name('elevator.blt');
-    Route::view('/elevator/hidoks', 'frontend.pages.concerns.elevator.hidoks')->name('elevator.hidoks');
-    Route::view('/elevator/sigma', 'frontend.pages.concerns.elevator.sigma')->name('elevator.sigma');
-    // Elevator brands (add inside the concern. group, next to hidoks/blt/sigma)
-    Route::view('/elevator/marsha', 'frontend.pages.concerns.elevator.marsha')->name('elevator.marsha');
-    Route::view('/elevator/ife', 'frontend.pages.concerns.elevator.ife')->name('elevator.ife');
-    Route::view('/elevator/xizi', 'frontend.pages.concerns.elevator.xizi')->name('elevator.xizi');
-    Route::view('/elevator/fuji-sj', 'frontend.pages.concerns.elevator.fuji-sj')->name('elevator.fuji-sj');
-    Route::view('/elevator/ningbo', 'frontend.pages.concerns.elevator.ningbo')->name('elevator.ningbo');
-    Route::view('/elevator/mrf', 'frontend.pages.concerns.elevator.mrf')->name('elevator.mrf');
 
-    Route::view('/energy', 'frontend.pages.concerns.energy')->name('energy');
-    Route::view('/care', 'frontend.pages.concerns.care')->name('care');
-    Route::view('/engineering', 'frontend.pages.concerns.engineering.index')->name('engineering');
-    Route::view('/engineering/generator', 'frontend.pages.concerns.engineering.generator')->name('engineering.generator');
-    Route::view('/engineering/generator/cummins', 'frontend.pages.concerns.engineering.generator.cummins')->name('engineering.generator.cummins');
-    Route::view('/engineering/generator/perkins', 'frontend.pages.concerns.engineering.generator.perkins')->name('engineering.generator.perkins');
-    Route::view('/engineering/generator/ricardo', 'frontend.pages.concerns.engineering.generator.ricardo')->name('engineering.generator.ricardo');
-    Route::view('/engineering/substation', 'frontend.pages.concerns.engineering.substation')->name('engineering.substation');
-    Route::view('/engineering/design', 'frontend.pages.concerns.engineering.design')->name('engineering.design');
-    Route::view('/landmark', 'frontend.pages.concerns.landmark')->name('landmark');
-});
+// Concerns: every page (menu, series, brands) comes from the admin panel
+Route::get('/concern/{path}', [ConcernController::class, 'show'])
+    ->where('path', '[A-Za-z0-9\-/]+')
+    ->name('concern.show');
+
 Route::get('/contact', function () {
     return view('frontend.pages.contact.index');
 })->name('contact');

@@ -1,7 +1,7 @@
 {{--
     Catalogue (PDF as a book).
-    Use:  @include('frontend.pages.concerns.partials.catalogue', ['pdf' => 'frontend/catalogs/hidoks.pdf', 'title' => 'Hidoks'])
-    The section appears only when the PDF file exists in /public, so you can add this line to every page now.
+    Use:  @include('frontend.pages.concerns.partials.catalogue', ['pdf' => 'uploads/catalogues/file.pdf', 'title' => 'Hidoks'])
+    The section appears only when the PDF file exists in /public.
 --}}
 @php $catFile = $pdf ?? null; @endphp
 @if ($catFile && file_exists(public_path($catFile)))

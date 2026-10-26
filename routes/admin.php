@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AboutSectionController;
 use App\Http\Controllers\Backend\AlbumController;
 use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
+use App\Http\Controllers\Backend\ConcernController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ManagementController;
 use App\Http\Controllers\Backend\SettingController;
@@ -29,6 +30,9 @@ Route::middleware([
     Route::resource('clients', ClientController::class)->except('show');
 
     Route::resource('managements', ManagementController::class)->only(['index', 'edit', 'update']);
+
+    Route::post('concerns/reorder', [ConcernController::class, 'reorder'])->name('concerns.reorder');
+    Route::resource('concerns', ConcernController::class)->except('show');
 
     Route::post('albums/reorder', [AlbumController::class, 'reorder'])->name('albums.reorder');
     Route::resource('albums', AlbumController::class)->except('show');

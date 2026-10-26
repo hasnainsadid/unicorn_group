@@ -59,6 +59,14 @@
                 <div>Management</div>
             </a>
         </li>
+
+        <li class="menu-item {{ request()->routeIs('concerns.*') ? 'active' : '' }}">
+            <a href="{{ route('concerns.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-building-skyscraper"></i>
+                <div>Concerns</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ request()->routeIs('albums.*') ? 'active' : '' }}">
             <a href="{{ route('albums.index') }}" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-photo"></i>
