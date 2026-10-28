@@ -950,8 +950,8 @@ header.site-header.scrolled {
     height: 480px;
     border-radius: var(--radius);
     background: #123a66
-        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=70")
-        center/cover;
+        url("")
+        Top/cover;
     box-shadow: var(--shadow-lg);
 }
 .about-media .img-sub {
