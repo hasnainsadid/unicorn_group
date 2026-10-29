@@ -1824,3 +1824,29 @@ footer .logo-word-img {
         background: #070a10;
     }
 }
+/* ---------- Mobile menu fix ----------
+   The blurred header is the containing block of the fixed menu, so a menu parked at
+   translateX(100%) made the page 2x wider (phones zoomed out) and the open menu was squashed.
+   Now the menu hangs right under the header and is revealed with a clip-path wipe instead. */
+html{overflow-x:hidden}
+body{max-width:100%}
+@media (max-width:900px){
+  nav.main-nav{
+    position:absolute;
+    top:100%;left:0;right:0;bottom:auto;
+    height:calc(100vh - var(--header-h));
+    height:calc(100dvh - var(--header-h));
+    transform:none;
+    clip-path:inset(0 0 0 100%);
+    visibility:hidden;
+    transition:clip-path .4s cubic-bezier(.3,.7,.2,1),visibility 0s linear .4s;
+  }
+  nav.main-nav.open{
+    clip-path:inset(0);
+    visibility:visible;
+    transition:clip-path .4s cubic-bezier(.3,.7,.2,1),visibility 0s;
+  }
+}
+
+/* Hero text had no side gap: .hero-inner{width:100%} overrode .container's width */
+.container.hero-inner{width:min(1240px,92%)}
