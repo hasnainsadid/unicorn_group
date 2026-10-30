@@ -78,26 +78,52 @@ class Concern extends Model
         }
     }
 
-    /** Ids of this item and everything below it. */
+    /**
+     * Ids of this item and everything below it.
+     * One query for the whole tree, then walked in memory.
+     */
     public function selfAndDescendantIds(): array
     {
-        $ids = [$this->id];
-        foreach (self::where('parent_id', $this->id)->get() as $child) {
-            $ids = array_merge($ids, $child->selfAndDescendantIds());
+        $byParent = self::query()->get(['id', 'parent_id'])->groupBy('parent_id');
+
+        $ids   = [];
+        $stack = [$this->id];
+
+        while ($stack) {
+            $id    = array_pop($stack);
+            $ids[] = $id;
+
+            foreach ($byParent->get($id, []) as $child) {
+                $stack[] = $child->id;
+            }
         }
+
         return $ids;
     }
 
-    /** Parents from the top down (not including this item). */
+    /**
+     * Parents from the top down (not including this item).
+     * The url path ("a/b/c") already holds every ancestor, so one query is enough.
+     */
     public function ancestors()
     {
-        $list = collect();
-        $node = $this->parent_id ? self::find($this->parent_id) : null;
-        while ($node) {
-            $list->prepend($node);
-            $node = $node->parent_id ? self::find($node->parent_id) : null;
+        $segments = explode('/', (string) $this->path);
+        array_pop($segments);                       // drop this item's own slug
+
+        $paths  = [];
+        $prefix = '';
+        foreach ($segments as $segment) {
+            $prefix  = $prefix === '' ? $segment : $prefix . '/' . $segment;
+            $paths[] = $prefix;
         }
-        return $list;
+
+        if (!$paths) {
+            return collect();
+        }
+
+        return self::whereIn('path', $paths)->get()
+            ->sortBy(fn ($c) => substr_count($c->path, '/'))
+            ->values();
     }
 
     public function root(): self
