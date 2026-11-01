@@ -35,7 +35,7 @@ body {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: #05080e url("../img/hero-escalator.webp") center center/cover
+    background: #05080e url("../img/hero-escalator.png") center center/cover
         no-repeat;
     transform: translateZ(0);
 }

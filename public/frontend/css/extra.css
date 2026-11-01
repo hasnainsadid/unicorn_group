@@ -4,7 +4,7 @@
 
 /* ---------- Hero with full-bleed photo ---------- */
 .hero{height:min(94vh,820px)}
-.hero-bg{position:absolute;inset:0;z-index:0;background-color:#0a0f18;background-image:url('../img/hero-escalator.webp');background-position:center center;background-size:cover;background-repeat:no-repeat}
+.hero-bg{position:absolute;inset:0;z-index:0;background-color:#0a0f18;background-image:url('../img/hero-escalator.png');background-position:center center;background-size:cover;background-repeat:no-repeat}
 @media (min-width:1025px){.hero-bg{background-attachment:fixed}}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(5,10,20,.9) 0%,rgba(5,10,20,.62) 48%,rgba(5,10,20,.28) 100%),radial-gradient(circle at 78% 28%,rgba(245,165,36,.2),transparent 45%)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;z-index:2;background:linear-gradient(to top,rgba(5,10,20,.65),transparent);pointer-events:none}
@@ -13,7 +13,7 @@
 
 /* ---------- Page banner (inner pages) ---------- */
 .page-banner{padding:110px 0 84px;color:#fff;position:relative;overflow:hidden;
-  background:linear-gradient(100deg,rgba(5,10,20,.92),rgba(5,10,20,.62)),url('../img/hero-escalator.webp') center 45%/cover;
+  background:linear-gradient(100deg,rgba(5,10,20,.92),rgba(5,10,20,.62)),url('../img/hero-escalator.png') center 45%/cover;
   background-attachment:scroll,fixed}
 .page-banner::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:5px;background:linear-gradient(90deg,var(--accent),var(--cyan))}
 .page-banner h1{font-family:var(--font-head);font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.1;margin-bottom:12px}
