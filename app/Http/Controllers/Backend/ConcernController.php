@@ -7,10 +7,11 @@ use App\Models\Concern;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ConcernController extends Controller
 {
-    private const IMAGES = ['image', 'image2', 'home_image'];
+    private const IMAGES = ['image', 'image2', 'home_image', 'banner_image', 'logo'];
 
     public function index()
     {
@@ -125,6 +126,7 @@ class ConcernController extends Controller
             'tagline'           => 'nullable|string|max:255',
             'body'              => 'nullable|string|max:8000',
             'features_text'     => 'nullable|string|max:3000',
+            'why_choose_us_text' => 'nullable|string|max:3000',
             'cards'             => 'nullable|array|max:3',
             'cards.*.icon'      => 'nullable|string|max:10',
             'cards.*.title'     => 'nullable|string|max:100',
@@ -139,9 +141,17 @@ class ConcernController extends Controller
             'image'             => 'nullable|image|max:10240',
             'image2'            => 'nullable|image|max:10240',
             'home_image'        => 'nullable|image|max:10240',
+            'banner_image'      => 'nullable|image|max:10240',
+            // a brand page must have its logo (existing one counts, unless it is being removed)
+            'logo'              => [
+                Rule::requiredIf(fn () => $request->input('layout') === 'brand'
+                    && !($concern && $concern->logo && !$request->boolean('remove_logo'))),
+                'nullable', 'image', 'max:5120',
+            ],
             'catalogue'         => 'nullable|file|mimes:pdf|max:61440',
         ], [
             'slug.regex'       => 'The URL name may only contain small letters, numbers and hyphens.',
+            'logo.required'    => 'A brand page needs its logo.',
             'catalogue.mimes'  => 'The catalogue must be a PDF file.',
             'catalogue.max'    => 'The catalogue PDF must be 60 MB or smaller.',
         ]);
@@ -150,6 +160,11 @@ class ConcernController extends Controller
         $lines = preg_split('/\R/', (string) ($data['features_text'] ?? ''));
         $data['features'] = array_values(array_filter(array_map('trim', $lines)));
         unset($data['features_text']);
+
+        // "Why Choose Us" list: one line = one point
+        $why = preg_split('/\R/', (string) ($data['why_choose_us_text'] ?? ''));
+        $data['why_choose_us'] = array_values(array_filter(array_map('trim', $why)));
+        unset($data['why_choose_us_text']);
 
         // cards: keep only rows that have a title
         $cards = [];

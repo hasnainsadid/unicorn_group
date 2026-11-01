@@ -10,6 +10,7 @@
 @endif
 
 {{-- ===================== BASIC ===================== --}}
+
 <div class="card mb-4">
     <div class="card-header"><h5 class="mb-0">{{ $editing ? 'Edit: ' . $concern->title : 'New Concern' }}</h5></div>
     <div class="card-body">
@@ -59,6 +60,39 @@
         </div>
     </div>
 </div>
+{{-- ===================== PAGE BANNER ===================== --}}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Page banner</h5>
+        <small class="text-muted">Optional picture behind the page title. Empty = the common banner. Best size 1920×600, WebP/JPG under 300 KB.</small>
+    </div>
+    <div class="card-body">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <label class="form-label">Banner picture</label>
+                <input type="file" name="banner_image" accept="image/*" class="form-control @error('banner_image') is-invalid @enderror">
+                @error('banner_image') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                @if($editing && $concern->banner_image)
+                    <div class="mt-2 d-flex align-items-center gap-3">
+                        <img src="{{ $concern->banner_image_url }}" style="height:70px;border-radius:8px">
+                        <label class="form-check mb-0"><input type="checkbox" class="form-check-input" name="remove_banner_image" value="1"> Remove</label>
+                    </div>
+                @endif
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Brand logo <small class="text-muted">(shown above the title; required for brand pages)</small></label>
+                <input type="file" name="logo" accept="image/*" class="form-control @error('logo') is-invalid @enderror">
+                @error('logo') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                @if($editing && $concern->logo)
+                    <div class="mt-2 d-flex align-items-center gap-3">
+                        <img src="{{ $concern->logo_url }}" style="height:50px;border-radius:8px;background:#fff;padding:6px">
+                        <label class="form-check mb-0"><input type="checkbox" class="form-check-input" name="remove_logo" value="1"> Remove</label>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
 
 {{-- ===================== CONTENT ===================== --}}
 <div class="card mb-4">
@@ -81,7 +115,12 @@
                 @error('body') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
             <div class="col-12">
-                <label class="form-label">"What We Offer" list <small class="text-muted">(one point per line, used in the details + sidebar layout)</small></label>
+                <label class="form-label">"Why Choose Us" list <small class="text-muted">(one point per line, used in the details + sidebar layout)</small></label>
+                <textarea name="why_choose_us_text" rows="6" class="form-control @error('why_choose_us_text') is-invalid @enderror">{{ old('why_choose_us_text', $concern->why_choose_us_text) }}</textarea>
+                @error('why_choose_us_text') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+            <div class="col-12">
+                <label class="form-label">"Why Choose UNICORN" list <small class="text-muted">(one point per line, used in the details + sidebar layout)</small></label>
                 <textarea name="features_text" rows="6" class="form-control">{{ old('features_text', $concern->features_text) }}</textarea>
             </div>
         </div>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('heading_highlight')->nullable();
             $table->string('tagline')->nullable();       // short line (brand layout + cards)
             $table->text('body')->nullable();            // paragraphs, blank line between them
-            $table->json('features')->nullable();        // "What We Offer" list
+            $table->json('features')->nullable();        // "Why Choose Unicorn" list
             $table->json('cards')->nullable();           // up to 3 cards: icon, title, text
             $table->string('image')->nullable();
             $table->string('image2')->nullable();

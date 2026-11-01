@@ -29,6 +29,13 @@
                             lasting relationships.</p>
                     </div>
                 </div>
+                <div class="why-item reveal d2">
+                    <div class="why-ico">$</div>
+                    <div>
+                        <h3>Cost-Effective & Transparent Pricing</h3>
+                        <p>We plan every project around your budget and keep our pricing open from quotation to handover, giving you lasting value for every taka you invest.</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="why-img reveal d2"

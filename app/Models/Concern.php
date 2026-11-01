@@ -13,17 +13,19 @@ class Concern extends Model
     protected $casts = [
         'features' => 'array',
         'cards'    => 'array',
+        'why_choose_us' => 'array',
     ];
 
     protected static function booted(): void
     {
-        static::saved(fn () => self::flush());
-        static::deleted(fn () => self::flush());
+        static::saved(fn() => self::flush());
+        static::deleted(fn() => self::flush());
     }
 
     public static function flush(): void
     {
         Cache::forget('concerns.tree');
+        Cache::forget('concerns.home');
     }
 
     /** Whole menu tree (top-level items with all children), cached. */
@@ -122,7 +124,7 @@ class Concern extends Model
         }
 
         return self::whereIn('path', $paths)->get()
-            ->sortBy(fn ($c) => substr_count($c->path, '/'))
+            ->sortBy(fn($c) => substr_count($c->path, '/'))
             ->values();
     }
 
@@ -161,6 +163,18 @@ class Concern extends Model
         return $this->media($this->image2 ?: $this->image);
     }
 
+    /** Banner picture of the page header (null when none, so the common banner is used). */
+    public function getBannerImageUrlAttribute(): ?string
+    {
+        return $this->banner_image ? $this->media($this->banner_image) : null;
+    }
+
+    /** Brand logo shown above the page title (null when none). */
+    public function getLogoUrlAttribute(): ?string
+    {
+        return $this->logo ? $this->media($this->logo) : null;
+    }
+
     public function getHomeImageUrlAttribute(): string
     {
         return $this->media($this->home_image ?: $this->image);
@@ -184,6 +198,11 @@ class Concern extends Model
     public function getFeaturesTextAttribute(): string
     {
         return implode("\n", $this->features ?? []);
+    }
+
+    public function getWhyChooseUsTextAttribute(): string
+    {
+        return implode("\n", $this->why_choose_us ?? []);
     }
 
     /** Heading with the highlighted word wrapped in <span>. */
