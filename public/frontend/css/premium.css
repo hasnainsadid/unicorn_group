@@ -1922,7 +1922,7 @@ footer .logo-word-img {
     overflow: hidden;
 }
 .client img {
-    max-height: 44px;
+    max-height: 80px;
     max-width: 150px;
     object-fit: contain;
     transition: transform 0.35s ease;

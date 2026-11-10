@@ -1741,10 +1741,11 @@ header.site-header.scrolled {
     place-items: center;
     font-family: var(--font-head);
     font-weight: 700;
-    color: var(--muted);
+    /* color: var(--muted); */
+    color: var(--primary);
     letter-spacing: 0.06em;
     transition: 0.3s;
-    filter: grayscale(1);
+    /* filter: grayscale(1); */
 }
 .client:hover {
     filter: none;
