@@ -45,11 +45,6 @@ class AboutSection extends Model
         return $this->resolve($this->image_main);
     }
 
-    public function getSubUrlAttribute(): string
-    {
-        return $this->resolve($this->image_sub);
-    }
-
     private function resolve(?string $img): string
     {
         return $img && str_starts_with($img, 'http') ? $img : imageShow($img);

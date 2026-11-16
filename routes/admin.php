@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AlbumImageController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ConcernController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ManagementController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SliderController;
@@ -17,10 +18,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified', CheckUploads::class,
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('backend.pages.dashboard.index');
-        // return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::resource('sliders', SliderController::class);
     Route::post('sliders/{slider}/toggle', [SliderController::class, 'toggle'])->name('sliders.toggle');

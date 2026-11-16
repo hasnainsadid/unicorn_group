@@ -41,7 +41,7 @@ class ConcernSeeder extends Seeder
         return "https://images.unsplash.com/photo-{$id}?auto=format&fit=crop&w={$w}&q=60";
     }
 
-    private function elevatorBrand(string $title, string $series, string $a, string $b): array
+    private function elevatorBrand(string $title, string $series, string $image): array
     {
         return [
             'title'    => $title,
@@ -50,12 +50,11 @@ class ConcernSeeder extends Seeder
             'tagline'  => "{$title} elevators supplied and serviced by Unicorn.",
             'body'     => "Unicorn Elevator supplies and installs {$title} elevators from its {$series} series for buildings that need dependable daily performance.\n\nOur team handles delivery, installation, testing and the service that follows, so the customer deals with one company only.",
             'features' => ['Supply and installation', 'Site survey and shaft check', 'Safety testing and handover', 'Annual maintenance contracts', 'Genuine spare parts', '24/7 breakdown support'],
-            'image'    => $this->img($a),
-            'image2'   => $this->img($b, 600),
+            'image'    => $this->img($image),
         ];
     }
 
-    private function series(string $title, string $a, string $b, array $brands): array
+    private function series(string $title, string $image, array $brands): array
     {
         return [
             'title'            => $title,
@@ -66,13 +65,12 @@ class ConcernSeeder extends Seeder
             'tagline'          => "{$title} series elevators supplied and serviced by Unicorn.",
             'body'             => "The {$title} series brings together the elevator brands we supply for this class of building.\n\nEvery brand is installed, tested and serviced by our own technicians.",
             'children_heading' => "Brands in the {$title} series",
-            'image'            => $this->img($a),
-            'image2'           => $this->img($b, 600),
+            'image'            => $this->img($image),
             'children'         => $brands,
         ];
     }
 
-    private function engine(string $title, string $a, string $b): array
+    private function engine(string $title, string $image): array
     {
         return [
             'title'    => $title,
@@ -81,8 +79,7 @@ class ConcernSeeder extends Seeder
             'tagline'  => "{$title} powered generator sets supplied and serviced by Unicorn.",
             'body'     => "Unicorn Engineering supplies generator sets with {$title} engines for banks, hospitals, factories, supermarkets and residential buildings that cannot afford a power cut.\n\nCapacity, fuel type and canopy are selected to suit the site. Installation, commissioning, after-sales support and maintenance contracts come with every supply.",
             'features' => ['Standby and prime power sets', 'Silent and open types', 'Site survey and load calculation', 'Installation and commissioning', 'Genuine spare parts', 'Maintenance contracts'],
-            'image'    => $this->img($a),
-            'image2'   => $this->img($b, 600),
+            'image'    => $this->img($image),
         ];
     }
 
@@ -107,7 +104,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '⚙', 'title' => 'Generators', 'text' => "Standby and prime power generator sets sized to the customer's load."],
                     ['icon' => '⚡', 'title' => 'Substations', 'text' => 'Substation packages with transformers, switchgear and commissioning support.'],
                 ],
-                'image' => $this->img($g2), 'image2' => $this->img('1581094288338-2314dddb7ece', 600),
+                'image' => $this->img($g2),
                 'home_icon' => '⚡', 'home_image' => $this->img('1473341304170-971dccb5ac1e'), 'home_order' => 4,
                 'home_text' => 'Importer and service partner for substations, escalators and generators.',
             ],
@@ -123,26 +120,26 @@ class ConcernSeeder extends Seeder
                     ['icon' => '👷', 'title' => 'Our own technicians', 'text' => 'The same team installs, tests and services every elevator.'],
                     ['icon' => '🔧', 'title' => 'After-sales service', 'text' => 'Maintenance contracts and genuine spare parts.'],
                 ],
-                'image' => $this->img($e2), 'image2' => $this->img($e1, 600),
+                'image' => $this->img($e2),
                 'home_icon' => '🛗', 'home_image' => $this->img($e2), 'home_order' => 1,
                 'home_text' => 'Elevators and escalators from leading makers, supplied and serviced with a focus on safety.',
                 'children' => [
-                    $this->series('Premium', $e1, $e3, [
-                        $this->elevatorBrand('Hidoks', 'Premium', $e1, $e3),
-                        $this->elevatorBrand('Marsha', 'Premium', $e3, $e4),
+                    $this->series('Premium', $e1, [
+                        $this->elevatorBrand('Hidoks', 'Premium', $e1),
+                        $this->elevatorBrand('Marsha', 'Premium', $e3),
                     ]),
-                    $this->series('Signature', $e2, $e4, [
-                        $this->elevatorBrand('BLT', 'Signature', $e2, $e4),
-                        $this->elevatorBrand('IFE', 'Signature', $e4, $e1),
-                        $this->elevatorBrand('Xizi', 'Signature', $e1, $e2),
+                    $this->series('Signature', $e2, [
+                        $this->elevatorBrand('BLT', 'Signature', $e2),
+                        $this->elevatorBrand('IFE', 'Signature', $e4),
+                        $this->elevatorBrand('Xizi', 'Signature', $e1),
                     ]),
-                    $this->series('Essential', $e3, $e1, [
-                        $this->elevatorBrand('Fuji SJ', 'Essential', $e3, $e2),
-                        $this->elevatorBrand('Ningbo', 'Essential', $e2, $e3),
-                        $this->elevatorBrand('Sigma', 'Essential', $e4, $e3),
+                    $this->series('Essential', $e3, [
+                        $this->elevatorBrand('Fuji SJ', 'Essential', $e3),
+                        $this->elevatorBrand('Ningbo', 'Essential', $e2),
+                        $this->elevatorBrand('Sigma', 'Essential', $e4),
                     ]),
-                    $this->series('Comfort', $e4, $e2, [
-                        $this->elevatorBrand('MRF', 'Comfort', $e4, $e1),
+                    $this->series('Comfort', $e4, [
+                        $this->elevatorBrand('MRF', 'Comfort', $e4),
                     ]),
                 ],
             ],
@@ -157,7 +154,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🏭', 'title' => 'Industrial', 'text' => 'Larger systems that lower running costs for factories.'],
                     ['icon' => '🛠', 'title' => 'After-sales support', 'text' => 'Inspection and maintenance to keep output steady.'],
                 ],
-                'image' => $this->img('1509391366360-2e959784a276'), 'image2' => $this->img('1508514177221-188b1cf16e9d', 600),
+                'image' => $this->img('1509391366360-2e959784a276'),
                 'home_icon' => '☀', 'home_image' => $this->img('1509391366360-2e959784a276'), 'home_order' => 6,
                 'home_text' => 'Solar energy solutions for homes, factories and commercial buildings.',
             ],
@@ -172,7 +169,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🧰', 'title' => 'Preventive maintenance', 'text' => 'Scheduled visits that find problems before they stop your building.'],
                     ['icon' => '🔩', 'title' => 'Spare support', 'text' => 'Replacement parts and repair for lifts, escalators and generators.'],
                 ],
-                'image' => $this->img('1581094288338-2314dddb7ece'), 'image2' => $this->img('1504307651254-35680f356dfd', 600),
+                'image' => $this->img('1581094288338-2314dddb7ece'),
                 'home_icon' => '🔧', 'home_image' => $this->img('1581094288338-2314dddb7ece'), 'home_order' => 7,
                 'home_text' => 'The best technical support for elevators, escalators and generators.',
             ],
@@ -187,7 +184,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🛋', 'title' => 'Furniture & fit-out', 'text' => 'Custom furniture, partitions, ceilings and lighting made to the design.'],
                     ['icon' => '🏠', 'title' => 'Turnkey delivery', 'text' => 'Supervision, finishing and handover handled by a single team.'],
                 ],
-                'image' => $this->img('1618221195710-dd6b41faaea6'), 'image2' => $this->img('1616486338812-3dadae4b4ace', 600),
+                'image' => $this->img('1618221195710-dd6b41faaea6'),
                 'home_icon' => '🛋', 'home_image' => $this->img('1618221195710-dd6b41faaea6'), 'home_order' => 5,
                 'home_text' => 'Interior design, furniture and fit-out for homes, offices and commercial spaces.',
             ],
@@ -203,7 +200,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '⚡', 'title' => 'Sub-stations', 'text' => 'Transformer, switchgear and protection packages.'],
                     ['icon' => '📐', 'title' => 'Design drawing', 'text' => '2D and 3D drawings and consultancy.'],
                 ],
-                'image' => $this->img($g2), 'image2' => $this->img('1473341304170-971dccb5ac1e', 600),
+                'image' => $this->img($g2),
                 'home_icon' => '⚙', 'home_image' => $this->img($g2), 'home_order' => 2,
                 'home_text' => 'Generators, sub-stations and 2D-3D design drawing consultancy.',
                 'children' => [
@@ -212,12 +209,12 @@ class ConcernSeeder extends Seeder
                         'tagline' => 'Standby and prime power generator sets, 20 kVA to 3,000 kVA.',
                         'body' => "Banks, hospitals, factories and supermarkets all depend on uninterrupted power. We supply genuine generators from small residential units to large industrial sets.\n\nPrices depend on capacity, engine brand, fuel type and whether the set is silent. After-sales support and maintenance contracts come with every supply.",
                         'features' => ['Capacity from 20 kVA to 3,000 kVA', 'Engines: Cummins, Perkins, Ricardo', 'Alternators: Leroy Somer, Stamford', 'Silent and open types', 'After-sales support', 'Maintenance contracts'],
-                        'image' => $this->img($g1), 'image2' => $this->img($g2, 600),
+                        'image' => $this->img($g1),
                         'children_heading' => 'Engine brands', 'children_text' => 'Generator sets by engine maker.',
                         'children' => [
-                            $this->engine('Cummins', $g1, $g2),
-                            $this->engine('Perkins', $g2, $g1),
-                            $this->engine('Ricardo', $g1, $g2),
+                            $this->engine('Cummins', $g1),
+                            $this->engine('Perkins', $g2),
+                            $this->engine('Ricardo', $g1),
                         ],
                     ],
                     [
@@ -225,14 +222,14 @@ class ConcernSeeder extends Seeder
                         'tagline' => 'Sub-station packages with transformers, switchgear and protection.',
                         'body' => "A sub-station sits between the power plant and the consumer: it steps high voltage down to a usable level, improves power factor and feeds power out through multiple feeders.\n\nWe supply, install and commission sub-stations with transformers, switchgear, protection and metering, backed by local after-sales support in Dhaka.",
                         'features' => ['Transformer and switchgear packages', 'Protection and metering', 'Indoor and outdoor types', 'Testing before handover', 'Commissioning support', 'Local after-sales support'],
-                        'image' => $this->img('1473341304170-971dccb5ac1e'), 'image2' => $this->img('1558618666-fcd25c85cd64', 600),
+                        'image' => $this->img('1473341304170-971dccb5ac1e'),
                     ],
                     [
                         'title' => 'Design Drawing Consultancy (2D-3D)', 'slug' => 'design-drawing', 'layout' => 'brand', 'eyebrow' => 'Unicorn Engineering',
                         'tagline' => '2D and 3D design drawings and consultancy.',
                         'body' => "We prepare 2D drawings and 3D models so that owners, architects and contractors can see a plan clearly before work starts.\n\nOur consultancy helps catch clashes and mistakes on paper, where they cost far less to fix than on site.",
                         'features' => ['2D working drawings', '3D models and visualisation', 'Layout and shaft planning', 'Design review and advice', 'Revisions with the client', 'Drawings ready for approval'],
-                        'image' => $this->img('1503387762-592deb58ef4e'), 'image2' => $this->img($e4, 600),
+                        'image' => $this->img('1503387762-592deb58ef4e'),
                     ],
                 ],
             ],
@@ -247,7 +244,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🏗', 'title' => 'Construction', 'text' => 'Quality building work delivered to plan.'],
                     ['icon' => '🏙', 'title' => 'Architecture & 3D', 'text' => 'Architectural design and 3D visuals before construction begins.'],
                 ],
-                'image' => $this->img($e4), 'image2' => $this->img('1486325212027-8081e485255e', 600),
+                'image' => $this->img($e4),
                 'home_icon' => '🏗', 'home_image' => $this->img($e4), 'home_order' => 3,
                 'home_text' => 'Land development, construction, architecture, 3D design and real-estate solutions.',
             ],

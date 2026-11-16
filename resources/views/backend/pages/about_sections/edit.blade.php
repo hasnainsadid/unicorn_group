@@ -59,13 +59,6 @@
                         <img src="{{ $section->main_url }}" alt="" class="mt-3" style="max-height:110px;border-radius:8px">
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">Small Image (overlapping)</label>
-                        <input type="file" name="image_sub" accept="image/*" class="form-control @error('image_sub') is-invalid @enderror">
-                        @error('image_sub') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                        <img src="{{ $section->sub_url }}" alt="" class="mt-3" style="max-height:110px;border-radius:8px">
-                    </div>
-
                     <div class="col-md-4">
                         <label class="form-label">Button Text (leave empty for no button)</label>
                         <input type="text" name="btn_text" class="form-control @error('btn_text') is-invalid @enderror"

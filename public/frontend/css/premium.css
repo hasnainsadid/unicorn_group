@@ -567,9 +567,6 @@ nav.main-nav {
 .faq.open {
     border-color: var(--accent);
 }
-.about-media .img-sub {
-    border-color: #0a0f18;
-}
 .t-card::before {
     background: linear-gradient(135deg, #0c1320, #1d3354);
 }

@@ -163,14 +163,14 @@
     <div class="card-header"><h5 class="mb-0">Pictures</h5></div>
     <div class="card-body">
         <div class="row g-4">
-            @foreach(['image' => 'Main picture', 'image2' => 'Second picture (small)'] as $field => $label)
+            @foreach(['image' => 'Main picture'] as $field => $label)
                 <div class="col-md-6">
                     <label class="form-label">{{ $label }}</label>
                     <input type="file" name="{{ $field }}" accept="image/*" class="form-control @error($field) is-invalid @enderror">
                     @error($field) <div class="invalid-feedback">{{ $message }}</div> @enderror
                     @if($editing && $concern->$field)
                         <div class="mt-2 d-flex align-items-center gap-3">
-                            <img src="{{ $field === 'image' ? $concern->image_url : $concern->image2_url }}" style="height:70px;border-radius:8px">
+                            <img src="{{ $concern->image_url }}" style="height:70px;border-radius:8px">
                             <label class="form-check mb-0"><input type="checkbox" class="form-check-input" name="remove_{{ $field }}" value="1"> Remove</label>
                         </div>
                     @endif

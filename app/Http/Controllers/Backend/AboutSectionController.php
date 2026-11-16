@@ -29,15 +29,12 @@ class AboutSectionController extends Controller
             'btn_text'   => 'nullable|string|max:60',
             'btn_url'    => 'nullable|string|max:255|required_with:btn_text',
             'image_main' => 'nullable|image|mimes:jpg,jpeg,png,webp',
-            'image_sub'  => 'nullable|image|mimes:jpg,jpeg,png,webp',
         ]);
 
-        foreach (['image_main', 'image_sub'] as $field) {
-            if ($request->hasFile($field)) {
-                $data[$field] = imageUpdateManager($request->file($field), $aboutSection->key, 'sections', $aboutSection->$field ?? '');
-            } else {
-                unset($data[$field]);
-            }
+        if ($request->hasFile('image_main')) {
+            $data['image_main'] = imageUpdateManager($request->file('image_main'), $aboutSection->key, 'sections', $aboutSection->image_main ?? '');
+        } else {
+            unset($data['image_main']);
         }
 
         $aboutSection->update($data);

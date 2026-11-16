@@ -158,11 +158,6 @@ class Concern extends Model
         return $this->media($this->image);
     }
 
-    public function getImage2UrlAttribute(): string
-    {
-        return $this->media($this->image2 ?: $this->image);
-    }
-
     /** Banner picture of the page header (null when none, so the common banner is used). */
     public function getBannerImageUrlAttribute(): ?string
     {

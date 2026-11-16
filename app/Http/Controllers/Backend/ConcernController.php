@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 
 class ConcernController extends Controller
 {
-    private const IMAGES = ['image', 'image2', 'home_image', 'banner_image', 'logo'];
+    private const IMAGES = ['image', 'home_image', 'banner_image', 'logo'];
 
     public function index()
     {
@@ -139,7 +139,6 @@ class ConcernController extends Controller
             'meta_title'        => 'nullable|string|max:150',
             'meta_description'  => 'nullable|string|max:300',
             'image'             => 'nullable|image|max:10240',
-            'image2'            => 'nullable|image|max:10240',
             'home_image'        => 'nullable|image|max:10240',
             'banner_image'      => 'nullable|image|max:10240',
             // a brand page must have its logo (existing one counts, unless it is being removed)

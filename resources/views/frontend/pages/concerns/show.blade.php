@@ -47,10 +47,6 @@
                         </ul>
                     @endif
 
-                    @if ($concern->image2)
-                        <div class="detail-img reveal"
-                            style="height:300px;margin-top:30px;background-image:url('{{ $concern->image2_url }}')"></div>
-                    @endif
                 </div>
 
                 <aside class="side">
@@ -80,7 +76,6 @@
             <div class="container about-grid">
                 <div class="about-media reveal">
                     <div class="img-main" style="background-image:url('{{ $concern->image_url }}')"></div>
-                    <div class="img-sub" style="background-image:url('{{ $concern->image2_url }}')"></div>
                 </div>
                 <div class="about-text reveal d2">
                     <span class="eyebrow">{{ $concern->eyebrow ?: 'Our Concern' }}</span>
