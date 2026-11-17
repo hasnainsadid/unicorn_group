@@ -2,7 +2,7 @@
     <div class="container-xxl">
         <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
             <div class="text-body">
-                &copy; {{ date('Y') }}, all rights reserved by Hasnain Sadid.
+                &copy; {{ date('Y') }}, all rights reserved by Unicorn Group.
             </div>
         </div>
     </div>
