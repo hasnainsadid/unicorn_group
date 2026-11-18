@@ -2011,12 +2011,6 @@ footer .logo-word-img {
     height: 128px;
     object-fit: contain;
 }
-@media (min-width: 1200px) {
-    .membership-group:last-child .member-of-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
-
 /* =========================================================
    Header dropdown (Concerns menu): premium look
    ========================================================= */
