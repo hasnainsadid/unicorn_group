@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', 'Contact Us')
-@section('meta_description', 'Contact Unicorn Group for quotations, technical support and 24/7 breakdown service. Find our address, phone, email and map.')
+@section('meta_description', 'Contact Unicorn Group for quotations, technical support and 24/7 breakdown service. Find
+    our address, phone, email and map.')
 @section('content')
     <section>
         <div class="container">
@@ -17,9 +18,13 @@
                     @endif
                     @if (setting('phone'))
                         <div class="info reveal d1"><i>📞</i>
-                            <div><b>Phone</b><span>{{ setting('phone') }}@if (setting('phone2'))
-                                        <br>{{ setting('phone2') }} (24/7 support)
-                                    @endif
+                            <div><b>Phone</b><span>
+                                    @if (setting('phone2'))
+                                        {{ setting('phone2') }} (Hotline-24/7 support)
+                                    @endif <br>
+                                    {{ setting('phone') }} <br>
+                                    +880 1335-106961 <br>
+                                    +880 1335-106962
                                 </span>
                             </div>
                         </div>

@@ -48,7 +48,7 @@
             <h4>Location</h4>
             <ul>
                 @if (setting('phone'))
-                    <li class="contact-li">📞 <a href="{{ tel_href(setting('phone')) }}">{{ setting('phone') }}</a>
+                    <li class="contact-li">📞 <a href="{{ tel_href(setting('phone2')) }}">{{ setting('phone2') }}</a>
                     </li>
                 @endif
                 @if (setting('email'))

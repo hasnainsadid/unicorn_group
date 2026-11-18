@@ -9,7 +9,7 @@
     @include('frontend.layouts.partials.style')
 </head>
 
-<body>
+<body class={{ request()->routeIs('contact') ? '' : 'no-copy' }}>
     @include('frontend.layouts.partials.preloader')
     @include('frontend.layouts.partials.topbar')
     

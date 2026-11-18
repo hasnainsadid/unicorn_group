@@ -11,3 +11,14 @@
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/extra.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/premium.css">
+<style>
+    img {
+        -webkit-user-drag: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .no-copy {
+        user-select: none;
+    }
+</style>
