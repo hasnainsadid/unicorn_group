@@ -11,5 +11,6 @@
     @include('frontend.pages.home.sections.concerns')
     {{-- @include('frontend.pages.home.sections.count') --}}
     @include('frontend.pages.home.sections.choose_us')
+    @include('frontend.pages.home.sections.memberOf')
     @include('frontend.pages.home.sections.clients')
 @endsection
