@@ -105,7 +105,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '⚡', 'title' => 'Substations', 'text' => 'Substation packages with transformers, switchgear and commissioning support.'],
                 ],
                 'image' => $this->img($g2),
-                'home_icon' => '⚡', 'home_image' => $this->img('1473341304170-971dccb5ac1e'), 'home_order' => 4,
+                'home_icon' => '⚡', 'home_image' => $this->img('1473341304170-971dccb5ac1e'), 'home_order' => 1,
                 'home_text' => 'Importer and service partner for substations, escalators and generators.',
             ],
             // ---------------------------------------------------------- Elevator
@@ -121,7 +121,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🔧', 'title' => 'After-sales service', 'text' => 'Maintenance contracts and genuine spare parts.'],
                 ],
                 'image' => $this->img($e2),
-                'home_icon' => '🛗', 'home_image' => $this->img($e2), 'home_order' => 1,
+                'home_icon' => '🛗', 'home_image' => $this->img($e2), 'home_order' => 6,
                 'home_text' => 'Elevators and escalators from leading makers, supplied and serviced with a focus on safety.',
                 'children' => [
                     $this->series('Premium', $e1, [
@@ -155,7 +155,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🛠', 'title' => 'After-sales support', 'text' => 'Inspection and maintenance to keep output steady.'],
                 ],
                 'image' => $this->img('1509391366360-2e959784a276'),
-                'home_icon' => '☀', 'home_image' => $this->img('1509391366360-2e959784a276'), 'home_order' => 6,
+                'home_icon' => '☀', 'home_image' => $this->img('1509391366360-2e959784a276'), 'home_order' => 7,
                 'home_text' => 'Solar energy solutions for homes, factories and commercial buildings.',
             ],
             // ---------------------------------------------------------- Care
@@ -170,7 +170,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '🔩', 'title' => 'Spare support', 'text' => 'Replacement parts and repair for lifts, escalators and generators.'],
                 ],
                 'image' => $this->img('1581094288338-2314dddb7ece'),
-                'home_icon' => '🔧', 'home_image' => $this->img('1581094288338-2314dddb7ece'), 'home_order' => 7,
+                'home_icon' => '🔧', 'home_image' => $this->img('1581094288338-2314dddb7ece'), 'home_order' => 2,
                 'home_text' => 'The best technical support for elevators, escalators and generators.',
             ],
             // ---------------------------------------------------------- Interior
@@ -201,7 +201,7 @@ class ConcernSeeder extends Seeder
                     ['icon' => '📐', 'title' => 'Design drawing', 'text' => '2D and 3D drawings and consultancy.'],
                 ],
                 'image' => $this->img($g2),
-                'home_icon' => '⚙', 'home_image' => $this->img($g2), 'home_order' => 2,
+                'home_icon' => '⚙', 'home_image' => $this->img($g2), 'home_order' => 4,
                 'home_text' => 'Generators, sub-stations and 2D-3D design drawing consultancy.',
                 'children' => [
                     [

@@ -18,7 +18,7 @@
             <div class="mv reveal d2">
                 <div class="ic">🧩</div>
                 <h3>Diverse Business Solutions</h3>
-                <p>Services across several sectors, all offered through our five concerns.</p>
+                <p>Services across several sectors, all offered through our seven concerns.</p>
             </div>
             <div class="mv reveal d0">
                 <div class="ic">🤝</div>

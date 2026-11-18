@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="why-img reveal d2"
-            style="background-image:url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=60')">
+            style="background-image:url('{{ asset('frontend/img/whychooseus.jpeg') }}')">
         </div>
     </div>
 </section>

@@ -25,7 +25,7 @@
 
 /* ---------- Product / service detail ---------- */
 .detail-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:52px;align-items:start}
-.detail-img{height:430px;border-radius:var(--radius);background:#123a66 center/cover;box-shadow:var(--shadow-lg);margin-bottom:34px;position:relative;overflow:hidden}
+.detail-img{height:430px;border-radius:var(--radius);background:#123a66 center/100% 100% no-repeat;box-shadow:var(--shadow-lg);margin-bottom:34px;position:relative;overflow:hidden}
 .detail-img::after{content:"";position:absolute;inset:16px;border:2px solid rgba(255,255,255,.5);border-radius:calc(var(--radius) - 6px)}
 .detail h2{font-family:var(--font-head);font-size:1.7rem;color:var(--primary);margin:6px 0 14px}
 [data-theme="dark"] .detail h2{color:#fff}

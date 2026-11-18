@@ -13,7 +13,7 @@
         </div>
         <div class="bento">
             @foreach($homeConcerns as $c)
-                <a class="bt reveal d{{ $loop->index % 3 }}" href="{{ $c->url }}"
+                <a class="bt bt-{{ $c->slug }} reveal d{{ $loop->index % 3 }}" href="{{ $c->url }}"
                     style="background-image:url('{{ $c->home_image_url }}')">
                     <span class="bt-ic">{{ $c->home_icon }}</span><span class="bt-go">→</span>
                     <div class="bt-tx">

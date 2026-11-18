@@ -1,5 +1,5 @@
 <!-- WeChat Button -->
-<a id="wc" href="https://your-wechat-link-here" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
+<a id="wc" href="{{ setting('wechat') }}" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
 
     <span class="chaty-icon channel-icon-WeChat">
         <span class="chaty-svg">
@@ -40,7 +40,7 @@
 </a>
 
 <!-- WhatsApp Button -->
-<a id="wa" href="https://wa.me/8801335106960" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<a id="wa" href="{{ setting('whatsapp') }}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
 
     <span class="chaty-icon channel-icon-Whatsapp">
         <span class="chaty-svg">

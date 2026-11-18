@@ -7,6 +7,21 @@
                     alt="Unicorn Group logo" width="303" height="118"></a>
             <p>Smart technology solutions built on trust, faith and service. Your reliable partner for engineering
                 excellence.</p>
+            <h4 style="margin-top:26px">A Proud Member Of</h4>
+            <div style="display: flex; gap: 15px">
+                <img src="{{ asset('frontend') }}/img/beelia.png" alt="" width="90" height="90">
+                <img src="{{ asset('frontend') }}/img/dcci.png" alt="" width="90" height="90">
+            </div>
+        </div>
+        <div>
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="{{ route('about') }}">About Us</a></li>
+                <li><a href="{{ route('management') }}">Management</a></li>
+                <li><a href="{{ route('about') }}#concerns">Our Concerns</a></li>
+                <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+            </ul>
             <h4 style="margin-top:26px">Stay Connected</h4>
             <div class="socials" style="margin-top:0">
                 @if (setting('facebook'))
@@ -25,16 +40,6 @@
                     <a href="{{ setting('instagram') }}" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
                 @endif
             </div>
-        </div>
-        <div>
-            <h4>Useful Links</h4>
-            <ul>
-                <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="{{ route('management') }}">Management</a></li>
-                <li><a href="{{ route('about') }}#concerns">Our Concerns</a></li>
-                <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                <li><a href="{{ route('contact') }}">Contact Us</a></li>
-            </ul>
         </div>
         <div>
             <h4>Our Concerns</h4>
