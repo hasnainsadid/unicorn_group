@@ -8,7 +8,7 @@
         <div class="membership-groups">
             <div class="membership-group reveal">
                 <h3>Proud Member Of</h3>
-                <div class="member-of-grid">
+                <div class="member-of-grid member-of-grid-single">
                     <div class="member-of-card">
                         <img
                             src="{{ asset('frontend/img/member/dcci.png') }}"
@@ -23,7 +23,7 @@
             </div>
 
             <div class="membership-group reveal d1">
-                <h3>Enlisted With</h3>
+                <h3>Proudly Enlisted With</h3>
                 <div class="member-of-grid">
                     <div class="member-of-card">
                         <img src="{{ asset('frontend/img/member/DPDCL.png') }}"

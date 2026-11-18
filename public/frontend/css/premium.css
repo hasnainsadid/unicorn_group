@@ -1956,7 +1956,7 @@ footer .logo-word-img {
 
 .membership-groups {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 30px;
 }
 .membership-group {
@@ -1983,6 +1983,9 @@ footer .logo-word-img {
     gap: 16px;
     margin-inline: auto;
 }
+.member-of-grid-single {
+    grid-template-columns: 1fr;
+}
 .member-of-card {
     display: grid;
     place-items: center;
@@ -2007,6 +2010,11 @@ footer .logo-word-img {
     width: 100%;
     height: 128px;
     object-fit: contain;
+}
+@media (min-width: 1200px) {
+    .membership-group:last-child .member-of-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
 /* =========================================================
