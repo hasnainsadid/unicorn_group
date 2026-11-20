@@ -8,7 +8,7 @@
         <section class="{{ $loop->even ? 'alt' : '' }}">
             <div class="container msg">
                 <div class="portrait reveal"
-                    @if ($m->photo_url) style="background-color:#0d1522;background-image:url('{{ $m->photo_url }}');background-position:center;background-size:100% 100%;background-repeat:no-repeat;font-size:0" @endif>
+                    @if ($m->photo_url) style="background:#0d1522 url('{{ $m->photo_url }}') center/cover;font-size:0" @endif>
                     {{ $m->initials }}</div>
                 <div class="reveal d2">
                     <span class="eyebrow">{{ $m->role_title }}</span>

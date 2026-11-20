@@ -1572,7 +1572,7 @@ header.site-header.scrolled {
 .gal {
     height: 250px;
     border-radius: 18px;
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--primary-2);

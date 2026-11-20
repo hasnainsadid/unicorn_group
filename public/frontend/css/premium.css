@@ -1637,7 +1637,7 @@ footer .logo-word-img {
     width: 46%;
     height: 170px;
     border-radius: 12px;
-    background: #0d1522 center/100% 100% no-repeat;
+    background: #0d1522 center/cover no-repeat;
     border: 4px solid #fff;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
     transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -1800,7 +1800,7 @@ footer .logo-word-img {
     width: 46%;
     height: 170px;
     border-radius: 12px;
-    background: #0d1522 center/100% 100% no-repeat;
+    background: #0d1522 center/cover no-repeat;
     border: 4px solid #fff;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
     transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);

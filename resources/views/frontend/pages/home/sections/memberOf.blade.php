@@ -26,12 +26,12 @@
                 <h3>Proudly Enlisted With</h3>
                 <div class="member-of-grid">
                     <div class="member-of-card">
-                        <img src="{{ asset('frontend/img/member/DPDCL.png') }}"
-                            alt="Dhaka Power Distribution Company Limited">
-                    </div>
-                    <div class="member-of-card">
                         <img src="{{ asset('frontend/img/member/sreda.png') }}"
                             alt="Sustainable and Renewable Energy Development Authority">
+                    </div>
+                    <div class="member-of-card">
+                        <img src="{{ asset('frontend/img/member/DPDCL.png') }}"
+                            alt="Dhaka Power Distribution Company Limited">
                     </div>
                     <div class="member-of-card">
                         <img src="{{ asset('frontend/img/member/desco.png') }}"
