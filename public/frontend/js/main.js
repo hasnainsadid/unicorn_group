@@ -128,8 +128,34 @@
 
   }
 
-  /* marquees: duplicate content for a seamless loop */
-  ['tick', 'track'].forEach(id => { const t = document.getElementById(id); if (t) t.innerHTML += t.innerHTML });
+  /* marquees: duplicate ticker content and size the clients loop to its logo group */
+  const ticker = $('#tick'); if (ticker) ticker.innerHTML += ticker.innerHTML;
+  const clientsMarquee = $('.clients-marquee');
+  if (clientsMarquee) {
+    const clientsTrack = $('.clients-track', clientsMarquee);
+    if (clientsTrack) {
+      const clientsGroup = $('.track-set', clientsTrack);
+      if (clientsGroup) {
+        const fillClientsTrack = () => {
+          clientsTrack.querySelectorAll('.track-set[aria-hidden="true"]').forEach(group => group.remove());
+          const groupWidth = clientsGroup.getBoundingClientRect().width;
+          if (!groupWidth) return;
+
+          while (clientsTrack.scrollWidth < clientsMarquee.clientWidth + groupWidth) {
+            const clone = clientsGroup.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            clientsTrack.appendChild(clone);
+          }
+
+          clientsTrack.style.setProperty('--marquee-shift', `${groupWidth}px`);
+          clientsTrack.style.setProperty('--marquee-duration', `${groupWidth / 65}s`);
+        };
+
+        fillClientsTrack();
+        new ResizeObserver(fillClientsTrack).observe(clientsMarquee);
+      }
+    }
+  }
 
   /* reveal on scroll, progress bars, counters */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .12 });

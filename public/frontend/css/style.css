@@ -1708,9 +1708,23 @@ header.site-header.scrolled {
 }
 .track {
     display: flex;
-    gap: 28px;
     width: max-content;
-    animation: scroll 32s linear infinite;
+}
+.clients-track {
+    gap: 0;
+    animation: clients-scroll var(--marquee-duration, 40s) linear infinite;
+    will-change: transform;
+}
+.track-set {
+    display: flex;
+    flex: none;
+    gap: 28px;
+    padding-right: 28px;
+}
+@keyframes clients-scroll {
+    to {
+        transform: translate3d(calc(-1 * var(--marquee-shift, 0px)), 0, 0);
+    }
 }
 .marquee:hover .track {
     animation-play-state: paused;

@@ -6,17 +6,19 @@
       <h2>Our Clients</h2>
     </div>
   </div>
-  <div class="marquee">
-    <div class="track" id="track">
-      @foreach($clients as $client)
-        <div class="client" title="{{ $client->name }}">
-          @if($client->logo)
-            <img src="{{ imageShow($client->logo) }}" alt="{{ $client->name }}" loading="lazy">
-          @else
-            {{ $client->name }}
-          @endif
-        </div>
-      @endforeach
+  <div class="marquee clients-marquee">
+    <div class="track clients-track">
+      <div class="track-set">
+        @foreach($clients as $client)
+          <div class="client" title="{{ $client->name }}">
+            @if($client->logo)
+              <img src="{{ imageShow($client->logo) }}" alt="{{ $client->name }}" loading="lazy">
+            @else
+              {{ $client->name }}
+            @endif
+          </div>
+        @endforeach
+      </div>
     </div>
   </div>
 </section>

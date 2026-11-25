@@ -2,7 +2,7 @@
     <div class="container">
         <div class="left">
             @if (setting('phone'))
-                <a href="{{ tel_href(setting('phone2')) }}">📞 {{ setting('phone2') }}</a>
+                <a href="{{ tel_href(setting('phone')) }}">📞 {{ setting('phone') }}</a>
             @endif
             @if (setting('email'))
                 <a href="mailto:{{ setting('email') }}">✉ {{ setting('email') }}</a>

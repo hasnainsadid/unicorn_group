@@ -19,12 +19,12 @@
                     @if (setting('phone'))
                         <div class="info reveal d1"><i>📞</i>
                             <div><b>Phone</b><span>
-                                    @if (setting('phone2'))
-                                        {{ setting('phone2') }} (Hotline-24/7 support)
+                                    @if (setting('phone'))
+                                        {{ setting('phone') }}
                                     @endif <br>
-                                    {{ setting('phone') }} <br>
                                     +880 1335-106961 <br>
-                                    +880 1335-106962
+                                    +880 1335-106962 <br>
+                                    {{ setting('phone2') }} (Hotline-24/7 support)
                                 </span>
                             </div>
                         </div>
