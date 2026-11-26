@@ -147,7 +147,7 @@
             clientsTrack.appendChild(clone);
           }
 
-          clientsTrack.style.setProperty('--marquee-shift', `${groupWidth}px`);
+          clientsTrack.style.setProperty('--marquee-shift', `-${groupWidth}px`);
           clientsTrack.style.setProperty('--marquee-duration', `${groupWidth / 65}s`);
         };
 

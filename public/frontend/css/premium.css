@@ -1900,6 +1900,12 @@ footer .logo-word-img {
     animation-delay:
         0s, 0.6s; /* WeChat ektu pore blink kore, duto ek shathe jole na */
 }
+#fb {
+    animation:
+        facebook-ring 2.4s infinite,
+        chat-blink 1.2s ease-in-out infinite;
+    animation-delay: 0s, 0.3s;
+}
 @keyframes chat-blink {
     0%,
     100% {
@@ -1913,14 +1919,16 @@ footer .logo-word-img {
 }
 /* hover korle blink thame, pura bright */
 #wa:hover,
-#wc:hover {
+#wc:hover,
+#fb:hover {
     animation-play-state: paused;
     opacity: 1;
     transform: scale(1.1);
 }
 @media (prefers-reduced-motion: reduce) {
     #wa,
-    #wc {
+    #wc,
+    #fb {
         animation: none;
     }
 }

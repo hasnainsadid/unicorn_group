@@ -1723,7 +1723,7 @@ header.site-header.scrolled {
 }
 @keyframes clients-scroll {
     to {
-        transform: translate3d(calc(-1 * var(--marquee-shift, 0px)), 0, 0);
+        transform: translate3d(var(--marquee-shift, 0px), 0, 0);
     }
 }
 .marquee:hover .track {
@@ -2077,7 +2077,8 @@ footer li a:hover {
 }
 
 #wa,
-#wc {
+#wc,
+#fb {
     position: fixed;
     right: 24px;
     width: 52px;
@@ -2114,11 +2115,20 @@ footer li a:hover {
     animation: wechat-ring 2.4s infinite;
 }
 
+#fb {
+    bottom: 222px;
+    background: #0866ff;
+    box-shadow: 0 8px 22px rgba(8, 102, 255, 0.4);
+    animation: facebook-ring 2.4s infinite;
+}
+
 /* Center both SVG icons */
 #wa .chaty-icon,
 #wa .chaty-svg,
 #wc .chaty-icon,
-#wc .chaty-svg {
+#wc .chaty-svg,
+#fb .chaty-icon,
+#fb .chaty-svg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2129,7 +2139,8 @@ footer li a:hover {
 
 /* Consistent icon sizing */
 #wa svg,
-#wc svg {
+#wc svg,
+#fb svg {
     display: block;
     width: 39px;
     height: 39px;
@@ -2138,7 +2149,8 @@ footer li a:hover {
 
 /* Hover */
 #wa:hover,
-#wc:hover {
+#wc:hover,
+#fb:hover {
     transform: scale(1.1);
     animation-play-state: paused;
 }
@@ -2169,10 +2181,23 @@ footer li a:hover {
     }
 }
 
+@keyframes facebook-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(8, 102, 255, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 14px rgba(8, 102, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(8, 102, 255, 0);
+    }
+}
+
 /* Mobile adjustment */
 @media (max-width: 576px) {
     #wa,
-    #wc {
+    #wc,
+    #fb {
         right: 16px;
         width: 48px;
         height: 48px;
@@ -2186,8 +2211,13 @@ footer li a:hover {
         bottom: 142px;
     }
 
+    #fb {
+        bottom: 202px;
+    }
+
     #wa svg,
-    #wc svg {
+    #wc svg,
+    #fb svg {
         width: 36px;
         height: 36px;
     }
@@ -2196,7 +2226,8 @@ footer li a:hover {
 /* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
     #wa,
-    #wc {
+    #wc,
+    #fb {
         animation: none;
         transition: none;
     }

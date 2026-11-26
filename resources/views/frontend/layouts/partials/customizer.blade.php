@@ -1,3 +1,17 @@
+<!-- Facebook Button -->
+@if (setting('facebook'))
+    <a id="fb" href="{{ setting('facebook') }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <span class="chaty-icon">
+            <span class="chaty-svg">
+                <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="19.5" cy="19.5" r="19.5" fill="#0866FF" />
+                    <path d="M22.3 38V21.2h5.65l.85-6.57H22.3v-4.19c0-1.9.53-3.2 3.25-3.2h3.47V1.37C28.42.95 26.55.6 24.36.6 19.8.6 16.68 3.37 16.68 8.45v6.18h-5.67v6.57h5.67V38h5.62Z" fill="#fff" />
+                </svg>
+            </span>
+        </span>
+    </a>
+@endif
+
 <!-- WeChat Button -->
 <a id="wc" href="{{ setting('wechat') }}" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
 
